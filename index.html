@@ -9,20 +9,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Mouse Spotlight -->
+    <div class="spotlight" id="spotlight"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-bar"></div>
+    </div>
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">A.K.M</a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#projects">Project</a></li>
+                <li><a href="branding.html">Branding</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -33,7 +54,9 @@
             <p class="tagline">I'm practicing to make my own presence in the world.</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn primary-btn">View My Work</a>
-                <a href="#contact" class="btn secondary-btn">Get In Touch</a>
+                <a href="mailto:abhijit.jitu4u@rediffmail.com" class="btn secondary-btn resume-btn">
+                    <i class="fas fa-file-download"></i> Resume
+                </a>
             </div>
         </div>
         <div class="hero-background">
@@ -49,8 +72,25 @@
                 <h2 class="section-title">About <span>Me</span></h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Welcome to my digital space. I'm Abhijit Kumar Misra, a passionate learner building my presence in the digital world. I am constantly exploring new technologies and improving my web development skills to create stunning and efficient user experiences.</p>
-                        <p>My journey is fueled by curiosity and a drive to solve real-world problems through elegant code and beautiful design.</p>
+                        <h3>Abhijit Kumar Misra (Jitu)</h3>
+                        <p>I am an enthusiastic computing lover. By education, I am a graduate in Economics, and I have completed various courses in Computer Science. Although I am not a certified programmer, I am an avid computer user. My journey began in the early stages of my school days, at a time when computers were a brand-new concept in our society.</p>
+                        <p>Back then, we worked on Windows 98, and later in college, we used applications on Windows 2000 and ME. Creating a simple PowerPoint presentation and sharing it with others brought us so much joy. Technology has evolved tremendously since then, and we have now entered the era of Artificial Intelligence. Today, all you need is your imagination, and AI will handle the hard work for you.</p>
+
+                        <!-- Developer Terminal -->
+                        <div class="terminal-container">
+                            <div class="terminal-header">
+                                <div class="terminal-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <div class="terminal-title">abhijit@portfolio: ~</div>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="terminal-line"><span class="prompt">jitu@dev:~$</span> cat abhijit.bio</div>
+                                <div class="terminal-line typing-content" id="terminal-text"></div>
+                            </div>
+                        </div>
 
                         <!-- Calendar Widget -->
                         <div class="calendar-wrapper">
@@ -87,25 +127,91 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section">
+            <div class="container fade-in">
+                <h2 class="section-title">Technical <span>Skills</span></h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li>HTML5 / CSS3</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-terminal"></i>
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>C++</li>
+                            <li>C#</li>
+                            <li>Logic Building</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>VS Code / Visual Studio</li>
+                            <li>Web Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Projects Section -->
         <section id="projects" class="section projects-section">
             <div class="container fade-in">
                 <h2 class="section-title">My <span>Projects</span></h2>
-                <p class="section-subtitle">Check back later! Awesome things are brewing in the lab.</p>
+                <p class="section-subtitle">A showcase of my recent work and coding journey.</p>
                 
                 <div class="projects-grid">
-                    <div class="project-card empty-state">
+                    <!-- Project 1 -->
+                    <div class="project-card">
                         <div class="project-content">
-                            <h3>Coming Soon</h3>
-                            <p>I am currently working on something amazing. Stay tuned for updates!</p>
-                            <span class="project-status">In Progress</span>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JS</span>
+                            </div>
+                            <h3>Personal Portfolio</h3>
+                            <p>A modern, responsive portfolio featuring glassmorphism, dynamic greetings, and an interactive calendar.</p>
+                            <div class="project-links">
+                                <span class="project-status">Live Project</span>
+                                <a href="#home" class="project-link">View Top</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card empty-state">
+                    <!-- Project 2 -->
+                    <div class="project-card">
                         <div class="project-content">
-                            <h3>Coming Soon</h3>
-                            <p>I am currently working on something amazing. Stay tuned for updates!</p>
-                            <span class="project-status">Planning Stage</span>
+                            <div class="project-tags">
+                                <span class="tag">Branding</span>
+                                <span class="tag">UI/UX</span>
+                            </div>
+                            <h3>Digital Brand Card</h3>
+                            <p>A sleek, mobile-optimized landing page for quick access to social profiles and professional branding.</p>
+                            <div class="project-links">
+                                <a href="branding.html" class="btn secondary-btn small-btn">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">C++</span>
+                                <span class="tag">C#</span>
+                            </div>
+                            <h3>College Lab Archive</h3>
+                            <p>A collection of programming logic and algorithms developed during my academic journey.</p>
+                            <div class="project-links">
+                                <span class="project-status">Repository</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,9 +222,26 @@
         <section id="contact" class="section contact-section">
             <div class="container fade-in">
                 <div class="contact-box">
-                    <h2 class="section-title">Get In <span>Touch</span></h2>
-                    <p>I'm always open to new opportunities, collaborations, or just a friendly chat.</p>
-                    <a href="mailto:abhijit.jitu4u@rediffmail.com" class="btn primary-btn contact-btn">Say Hello</a>
+                    <h2 class="section-title">Jitu's <span>Creative Works</span></h2>
+                    <p><strong>Abhijit Kumar Misra</strong><br>
+                    Phone No. 9009009009<br>
+                    Email - abhijit.jitu4u@rediffmail.com</p>
+
+                    <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn contact-submit">
+                            <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+
                     <div class="social-links">
                         <a href="https://github.com/Jitu-85" target="_blank" class="social-link" title="GitHub">
                             <!-- GitHub SVG Icon -->
@@ -139,9 +262,9 @@
     </footer>
 
     <!-- Branding Badge -->
-    <div class="branding-badge">
+    <a href="branding.html" class="branding-badge" style="pointer-events: auto; text-decoration: none;">
         Developed by <br> <span>Abhijit Kumar Misra</span>
-    </div>
+    </a>
 
     <!-- Scripts -->
     <script src="script.js"></script>

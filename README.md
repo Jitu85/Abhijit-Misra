@@ -1,22 +1,34 @@
 # Abhijit Kumar Misra
 
-Welcome to my digital space! I am a passionate learner and developer building my presence in the tech world.
+Welcome to my digital space! I am a passionate learner and computing enthusiast building a professional presence in the tech world through elegant code and modern design.
 
 ## 🚀 About Me
-I'm constantly exploring new technologies and improving my skills to create efficient user experiences. This repository contains my journey, from college-day C++ and C# explorations to modern web development.
+I am an enthusiastic computing lover. By education, I am a graduate in Economics, and I have completed various courses in Computer Science. Although I am not a certified programmer, I am an avid computer user. My journey with computers began in my early school days when they were a brand-new concept in our society.
+
+In those days, we worked on Windows 98, and later in college, we used applications on Windows 2000 and ME. Creating a simple PowerPoint presentation and sharing it with others brought us so much joy. Time has passed, and today we are in the era of Artificial Intelligence. Now, all you need is your imagination, and AI will handle the hard work for you.
+
+## 📞 Contact - Jitu's Creative Works
+- **Name:** Abhijit Kumar Misra (Jitu)
+- **Phone:** 9009009009
+- **Email:** [abhijit.jitu4u@rediffmail.com](mailto:abhijit.jitu4u@rediffmail.com)
 
 ## 📂 Featured Content
-- **[Portfolio Website](index.html)**: My professional webpage with an **interactive calendar** and **dynamic greetings**.
-- **[Digital Business Card](branding.html)**: A sleek, mobile-optimized branding page.
-- **College Files**: A collection of C++ & C# programming codes from my academic journey.
+- **[Portfolio Website](index.html)**: A high-end personal portal featuring Glassmorphism, interactive elements, and dynamic UX.
+- **[Digital Brand Card](branding.html)**: A mobile-optimized landing page for professional networking.
+- **College Lab Archive**: A collection of foundational programming logic and algorithms.
 
-## ✨ New Features
-- 📅 **Interactive Glassmorphism Calendar**: Real-time date tracking and navigation.
-- 🌅 **Time-Aware Greetings**: Personalized UX that changes from Morning to Evening.
-- 💎 **Premium Branding**: Custom "Developed by" signatures and floating badges.
+## ✨ Premium Features
+- 🌓 **Adaptive Theme Engine**: Seamless Dark/Light mode toggle with system preference detection.
+- ⌨️ **Interactive Developer Terminal**: A macOS-style terminal that types out my professional bio.
+- 🔦 **Dynamic Mouse Spotlight**: A high-performance background glow that follows the user's cursor.
+- 📅 **Glassmorphism Calendar**: A fully functional, custom-built date navigator.
+- 🌅 **Context-Aware Greetings**: Personalized greetings (Morning/Afternoon/Evening) based on local time.
+- 💎 **Floating Branding Badge**: Persistent "Developed by Abhijit Kumar Misra" watermark.
+- 📊 **Skills Visualizer & Timeline**: Interactive display of technical expertise and journey.
 
 ## 🛠️ Tech Stack
-- **Frontend**: HTML5, CSS3 (Glassmorphism), JavaScript (ES6+)
+- **Frontend**: HTML5, CSS3 (Advanced Animations, Flex/Grid), JavaScript (ES6+, DOM API)
+- **UI/UX**: Glassmorphism, Responsive Design, Interactive Components
 - **Programming**: C++, C#
 
 ---
