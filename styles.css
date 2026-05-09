@@ -495,6 +495,36 @@ h1, h2, h3, h4 {
     transform: translateY(0);
 }
 
+/* --- Branding Badge --- */
+.branding-badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    z-index: 1000;
+    text-align: right;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    animation: fadeInBadge 1s ease-out 2s both;
+}
+
+.branding-badge span {
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+@keyframes fadeInBadge {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
     .nav-links {

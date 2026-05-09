@@ -10,7 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navbar.classList.remove('scrolled');
         }
-        // Calendar Logic
+        // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
+    // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
     const prevBtn = document.getElementById('prev-month');
@@ -82,7 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target); // Stop observing once it's visible
             }
-            // Calendar Logic
+            // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
+    // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
     const prevBtn = document.getElementById('prev-month');
@@ -145,7 +167,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(element => {
         observer.observe(element);
-        // Calendar Logic
+        // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
+    // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
     const prevBtn = document.getElementById('prev-month');
@@ -216,7 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
-                    // Calendar Logic
+                    // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
+    // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
     const prevBtn = document.getElementById('prev-month');
@@ -275,7 +319,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
             }
-            // Calendar Logic
+            // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
+    // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
     const prevBtn = document.getElementById('prev-month');
@@ -333,7 +388,18 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCalendar();
     }
 });
-        // Calendar Logic
+        // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
+    // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
     const prevBtn = document.getElementById('prev-month');
@@ -391,6 +457,17 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCalendar();
     }
 });
+    // Dynamic Greeting
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting = "Hi";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+        greetingElement.textContent = greeting;
+    }
+
     // Calendar Logic
     const monthName = document.getElementById('month-name');
     const calendarDays = document.getElementById('calendar-days');
