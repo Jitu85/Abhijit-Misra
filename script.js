@@ -164,15 +164,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 9. Terminal Typing Animation
     const terminalText = document.getElementById('terminal-text');
-    const bioText = "I am an enthusiastic computing lover. By education, I am a graduate in Economics, and I have completed various courses in Computer Science. My journey began in the early stages of my school days, at a time when computers were a brand-new concept in our society. Creating a simple PowerPoint presentation and sharing it with others brought us so much joy. Technology has evolved tremendously since then, and we have now entered the era of Artificial Intelligence. Today, all you need is your imagination, and AI will handle the hard work for you.";
+    const bioText = `> git init
+Initialized empty Git repository in /home/jitu/creative-works/
+> git add about_me.txt
+> git commit -m "Initial commit: Economics graduate with a passion for computing."
+[master (root-commit) a1b2c3d] Economics graduate with a passion for computing.
+> git status
+On branch master
+Your career is up to date with 'origin/learning'.
+nothing to commit, working tree clean (ready for the AI era).`;
 
     let isTyping = false;
     function typeWriter(text, i, fnCallback) {
         if (i < text.length) {
-            terminalText.innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
+            terminalText.textContent = text.substring(0, i + 1);
             setTimeout(function() {
                 typeWriter(text, i + 1, fnCallback)
-            }, 30);
+            }, 20);
         } else if (typeof fnCallback == 'function') {
             setTimeout(fnCallback, 700);
         }
@@ -228,4 +236,35 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.detail > 1) e.preventDefault(); // Prevent double click selection
         }, false);
     }
+
+    // 13. UI/UX Enhancements: Back to Top & Active Link Tracking
+    const backToTopBtn = document.getElementById('back-to-top');
+    const sections = document.querySelectorAll('section, header');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        // Show/Hide Back to Top button
+        if (window.scrollY > 500) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+
+        // Active Link Tracking (ScrollSpy)
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
+            }
+        });
+    });
 });
