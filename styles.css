@@ -392,6 +392,84 @@ h1, h2, h3, h4 {
     font-weight: 600;
 }
 
+/* --- Resume Section --- */
+.resume-viewer-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.resume-toolbar {
+    background: #2d3748;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.resume-toolbar .dots {
+    display: flex;
+    gap: 8px;
+}
+
+.resume-toolbar .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.resume-title {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+}
+
+.view-only-tag {
+    font-size: 0.75rem;
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--accent-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.resume-frame-wrapper {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background: #525659;
+}
+
+.resume-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.resume-protection-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+    cursor: default;
+}
+
+@media (max-width: 768px) {
+    .resume-frame-wrapper {
+        height: 500px;
+    }
+}
+
 /* --- Projects Section --- */
 .projects-grid {
     display: grid;

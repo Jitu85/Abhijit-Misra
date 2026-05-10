@@ -214,4 +214,18 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.style.boxShadow = '0 0 20px rgba(39, 201, 63, 0.4)';
         });
     }
+
+    // 12. Resume Protection Logic
+    const resumeOverlay = document.querySelector('.resume-protection-overlay');
+    if (resumeOverlay) {
+        // Disable right-click on the resume viewer
+        resumeOverlay.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        // Prevent dragging or selecting content if possible via overlay
+        resumeOverlay.addEventListener('mousedown', (e) => {
+            if (e.detail > 1) e.preventDefault(); // Prevent double click selection
+        }, false);
+    }
 });

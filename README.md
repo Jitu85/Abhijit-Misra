@@ -1,4 +1,4 @@
-# Abhijit Kumar Misra
+# Jitu's Creative Works | Abhijit Kumar Misra
 
 Welcome to my digital space! I am a passionate learner and computing enthusiast building a professional presence in the tech world through elegant code and modern design.
 
@@ -24,6 +24,7 @@ In those days, we worked on Windows 98, and later in college, we used applicatio
 - 📅 **Glassmorphism Calendar**: A fully functional, custom-built date navigator.
 - 🌅 **Context-Aware Greetings**: Personalized greetings (Morning/Afternoon/Evening) based on local time.
 - 💎 **Floating Branding Badge**: Persistent "Developed by Abhijit Kumar Misra" watermark.
+- 🛡️ **Protected Resume Viewer**: Secure, view-only document embedding with interaction safeguards.
 - 📊 **Skills Visualizer & Timeline**: Interactive display of technical expertise and journey.
 
 ## 🛠️ Tech Stack

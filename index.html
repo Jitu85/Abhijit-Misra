@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal webpage of Abhijit Kumar Misra">
+    <meta name="description" content="Official Portfolio of Abhijit Kumar Misra (Jitu) - Economics Graduate & Computing Enthusiast. Explore my projects, skills, and creative works.">
+    <meta name="keywords" content="Abhijit Kumar Misra, Jitu, Portfolio, Web Developer, Economics, Computing Enthusiast, Jitu's Creative Works">
+    <meta name="author" content="Abhijit Kumar Misra">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jitu85.github.io/Abhijit-Misra/">
+    <meta property="og:title" content="Abhijit Kumar Misra | Jitu's Creative Works">
+    <meta property="og:description" content="High-end personal portfolio featuring modern design, interactive elements, and professional branding.">
+    <meta property="og:image" content="https://jitu85.github.io/Abhijit-Misra/assets/preview-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jitu85.github.io/Abhijit-Misra/">
+    <meta property="twitter:title" content="Abhijit Kumar Misra | Jitu's Creative Works">
+    <meta property="twitter:description" content="High-end personal portfolio featuring modern design, interactive elements, and professional branding.">
+    <meta property="twitter:image" content="https://jitu85.github.io/Abhijit-Misra/assets/preview-image.jpg">
+
     <title>Abhijit Kumar Misra - Portfolio</title>
     <script>document.documentElement.classList.add('js-enabled');</script>
     <!-- Google Fonts -->
@@ -55,8 +72,8 @@
             <p class="tagline">I'm practicing to make my own presence in the world.</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn primary-btn">View My Work</a>
-                <a href="mailto:abhijit.jitu4u@rediffmail.com" class="btn secondary-btn resume-btn">
-                    <i class="fas fa-file-download"></i> Resume
+                <a href="#resume-section" class="btn secondary-btn resume-btn">
+                    <i class="fas fa-eye"></i> View Resume
                 </a>
             </div>
         </div>
@@ -159,6 +176,32 @@
                             <li>VS Code / Visual Studio</li>
                             <li>Web Optimization</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume-section" class="section resume-section">
+            <div class="container fade-in">
+                <h2 class="section-title">My <span>Resume</span></h2>
+                <p class="section-subtitle">View my professional qualifications and journey.</p>
+
+                <div class="resume-viewer-container">
+                    <div class="resume-toolbar">
+                        <div class="dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="resume-title">Abhijit_Kumar_Misra_Resume.pdf</div>
+                        <div class="view-only-tag"><i class="fas fa-lock"></i> View Only</div>
+                    </div>
+                    <div class="resume-frame-wrapper">
+                        <!-- The #toolbar=0&navpanes=0&scrollbar=0 parameters hide the browser's PDF controls -->
+                        <iframe src="resume.pdf#toolbar=0&navpanes=0&scrollbar=0" class="resume-iframe" id="resume-iframe"></iframe>
+                        <!-- This overlay prevents right-clicks and direct file interaction -->
+                        <div class="resume-protection-overlay"></div>
                     </div>
                 </div>
             </div>
