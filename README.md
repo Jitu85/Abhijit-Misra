@@ -15,7 +15,8 @@ In those days, we worked on Windows 98, and later in college, we used applicatio
 ## 📂 Featured Content
 - **[Portfolio Website](index.html)**: A high-end personal portal featuring Glassmorphism, interactive elements, and dynamic UX.
 - **[Digital Brand Card](branding.html)**: A mobile-optimized landing page for professional networking.
-- **College Lab Archive**: A collection of foundational programming logic and algorithms.
+- **[Smart Calc](https://smart-calc-pro.surge.sh/)**: A premium Utility Suite designed and developed by Abhijit Kumar Misra.
+- **[Practice Abacus](https://practice-abacus.surge.sh/)**: Master Mental Math designed and developed by Abhijit Kumar Misra.
 
 ## ✨ Premium Features
 - 🌓 **Adaptive Theme Engine**: Seamless Dark/Light mode toggle with system preference detection.
