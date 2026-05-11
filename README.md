@@ -17,6 +17,11 @@ In those days, we worked on Windows 98, and later in college, we used applicatio
 - **[Digital Brand Card](branding.html)**: A mobile-optimized landing page for professional networking.
 - **[Smart Calc](https://smart-calc-pro.surge.sh/)**: A premium Utility Suite designed and developed by Abhijit Kumar Misra.
 - **[Practice Abacus](https://practice-abacus.surge.sh/)**: Master Mental Math designed and developed by Abhijit Kumar Misra.
+- **[Quick Calc](https://purchase-calc.surge.sh/)**: Efficient purchase calculator for quick transactions.
+- **[PDF Toolkit](http://pdf-toolkit-live.web.app)**: Comprehensive web-based suite for PDF manipulations.
+- **[Planning with AI](https://planning-with-ai-8695e.web.app)**: Intelligent planning assistant powered by AI.
+- **[All About Myself](https://jitu-85.github.io/my)**: A deeper dive into my personal journey and background.
+- **[Purchase & Billing System](https://jitu.gt.tc)**: Professional enterprise solution for purchase and sales management (Under Testing).
 
 ## ✨ Premium Features
 - 🌓 **Adaptive Theme Engine**: Seamless Dark/Light mode toggle with system preference detection.

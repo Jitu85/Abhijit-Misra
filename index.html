@@ -202,10 +202,16 @@
                         <div class="view-only-tag"><i class="fas fa-lock"></i> View Only</div>
                     </div>
                     <div class="resume-frame-wrapper">
-                        <!-- The #toolbar=0&navpanes=0&scrollbar=0 parameters hide the browser's PDF controls -->
-                        <iframe src="resume.pdf#toolbar=0&navpanes=0&scrollbar=0" class="resume-iframe" id="resume-iframe"></iframe>
-                        <!-- This overlay prevents right-clicks and direct file interaction -->
-                        <div class="resume-protection-overlay"></div>
+                        <!-- Removed restrictive parameters to allow scrolling -->
+                        <iframe src="resume.pdf" class="resume-iframe" id="resume-iframe"></iframe>
+                        <!-- Fallback for mobile -->
+                        <div class="resume-mobile-fallback">
+                            <div class="fallback-icon"><i class="fas fa-file-pdf"></i></div>
+                            <p>For the best experience on mobile, please open the resume directly.</p>
+                            <a href="resume.pdf" target="_blank" class="btn primary-btn">
+                                <i class="fas fa-external-link-alt"></i> Open Resume PDF
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -275,6 +281,81 @@
                             <div class="project-links">
                                 <a href="https://practice-abacus.surge.sh/" target="_blank" class="btn primary-btn small-btn">Live Demo</a>
                                 <span class="project-status">Live</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 5 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Utility</span>
+                                <span class="tag">Surge.sh</span>
+                            </div>
+                            <h3>Quick Calc</h3>
+                            <p>Efficient purchase calculator for quick business and personal transactions.</p>
+                            <div class="project-links">
+                                <a href="https://purchase-calc.surge.sh/" target="_blank" class="btn primary-btn small-btn">Live Demo</a>
+                                <span class="project-status">Live</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Web App</span>
+                                <span class="tag">Firebase</span>
+                            </div>
+                            <h3>PDF Toolkit</h3>
+                            <p>A comprehensive web-based suite for various PDF manipulations and tools.</p>
+                            <div class="project-links">
+                                <a href="http://pdf-toolkit-live.web.app" target="_blank" class="btn primary-btn small-btn">Live Demo</a>
+                                <span class="project-status">Live</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 7 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">Firebase</span>
+                            </div>
+                            <h3>Planning with AI</h3>
+                            <p>Intelligent planning assistant leveraging AI to organize your tasks and schedule.</p>
+                            <div class="project-links">
+                                <a href="https://planning-with-ai-8695e.web.app" target="_blank" class="btn primary-btn small-btn">Live Demo</a>
+                                <span class="project-status">Live</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 8 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Personal</span>
+                                <span class="tag">Bio</span>
+                            </div>
+                            <h3>All About Myself</h3>
+                            <p>A dedicated space exploring my personal journey, interests, and background in detail.</p>
+                            <div class="project-links">
+                                <a href="https://jitu-85.github.io/my" target="_blank" class="btn primary-btn small-btn">Visit Site</a>
+                                <span class="project-status">Live</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 9 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Business</span>
+                                <span class="tag">ERP</span>
+                            </div>
+                            <h3>Purchase & Billing System</h3>
+                            <p>Professional solution for vendors and enterprises to manage purchase and sales operations.</p>
+                            <div class="project-links">
+                                <a href="https://jitu.gt.tc" target="_blank" class="btn primary-btn small-btn">Internal Testing</a>
+                                <span class="project-status">Under Process</span>
                             </div>
                         </div>
                     </div>
