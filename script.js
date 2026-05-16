@@ -44,8 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Dynamic Greeting
+    // 4. Dynamic Greeting & Clock
     const greetingElement = document.getElementById('greeting');
+    const timeElement = document.getElementById('nav-time');
+
+    function updateTime() {
+        if (timeElement) {
+            const now = new Date();
+            timeElement.textContent = now.toLocaleTimeString();
+        }
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
     if (greetingElement) {
         const hour = new Date().getHours();
         let greeting = "Hi";

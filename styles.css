@@ -185,6 +185,20 @@ h1, h2, h3, h4 {
     align-items: center;
 }
 
+.logo-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-time {
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-family: monospace;
+    margin-top: -2px;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
@@ -348,11 +362,24 @@ h1, h2, h3, h4 {
     background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
 }
 
-/* Buttons */
+/* --- CTA Buttons Fix --- */
 .cta-buttons {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
+    flex-wrap: wrap; /* Ensure multi-row on small screens if needed */
+}
+
+.personal-btn {
+    background: linear-gradient(135deg, #ff0080, #7928ca);
+    box-shadow: 0 4px 15px rgba(255, 0, 128, 0.4);
+    border: none;
+}
+
+.personal-btn:hover {
+    background: linear-gradient(135deg, #ff0080, #7928ca);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(255, 0, 128, 0.6);
 }
 
 .btn {
@@ -1152,10 +1179,26 @@ h1, h2, h3, h4 {
         opacity: 0.3;
     }
     /* Remove heavy blurs on mobile to prevent "Black Screen" rendering bugs */
-    .navbar, .about-content, .project-card, .skill-category, .contact-box, .branding-badge, .card {
+    .navbar {
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        background-color: var(--glass-bg) !important;
+        border-bottom: 1px solid var(--glass-border) !important;
+    }
+
+    .about-content, .project-card, .skill-category, .contact-box, .branding-badge, .card {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         background-color: #1e293b !important; /* Solid fallback for visibility */
+    }
+
+    [data-theme="light"] .about-content,
+    [data-theme="light"] .project-card,
+    [data-theme="light"] .skill-category,
+    [data-theme="light"] .contact-box,
+    [data-theme="light"] .branding-badge {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(0,0,0,0.1) !important;
     }
 
     .hero-background {
