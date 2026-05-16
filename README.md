@@ -13,7 +13,7 @@ In those days, we worked on Windows 98, and later in college, we used applicatio
 - **Email:** [abhijit.jitu4u@rediffmail.com](mailto:abhijit.jitu4u@rediffmail.com)
 
 ## 📂 Featured Content
-- **[Portfolio Website](index.html)**: A high-end personal portal featuring Glassmorphism, interactive elements, and dynamic UX.
+- **[My Mom's Literary Contribution](https://sabitamisra.wordpress.com/)**: Click to visit Sabita Misra's own personal blog.
 - **[Digital Brand Card](branding.html)**: A mobile-optimized landing page for professional networking.
 - **[Smart Calc](https://smart-calc-pro.surge.sh/)**: A premium Utility Suite designed and developed by Abhijit Kumar Misra.
 - **[Practice Abacus](https://practice-abacus.surge.sh/)**: Master Mental Math designed and developed by Abhijit Kumar Misra.
