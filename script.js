@@ -51,7 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTime() {
         if (timeElement) {
             const now = new Date();
-            timeElement.textContent = now.toLocaleTimeString();
+            const day = now.getDate();
+            const months = ["January", "February", "March", "April", "May", "June",
+                           "July", "August", "September", "October", "November", "December"];
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const timeString = `${day} ${month} ${year} | Time: ${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+            timeElement.textContent = timeString;
         }
     }
     setInterval(updateTime, 1000);
@@ -71,28 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const sunIcon = document.querySelector('.sun-icon');
     const moonIcon = document.querySelector('.moon-icon');
 
-    // Check for saved theme preference or use system preference
-    const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-
-    if (currentTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        if (sunIcon) sunIcon.style.display = 'none';
-        if (moonIcon) moonIcon.style.display = 'block';
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            if (sunIcon) sunIcon.style.display = 'none';
+            if (moonIcon) moonIcon.style.display = 'block';
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            if (sunIcon) sunIcon.style.display = 'block';
+            if (moonIcon) moonIcon.style.display = 'none';
+        }
     }
+
+    // Auto theme based on time: 6 AM to 6 PM is Light, otherwise Dark
+    const hour = new Date().getHours();
+    const isDayTime = hour >= 6 && hour < 18;
+    const autoTheme = isDayTime ? 'light' : 'dark';
+
+    const savedTheme = localStorage.getItem('theme');
+    const currentTheme = savedTheme || autoTheme;
+
+    applyTheme(currentTheme);
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             if (theme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
+                applyTheme('dark');
                 localStorage.setItem('theme', 'dark');
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
             } else {
-                document.documentElement.setAttribute('data-theme', 'light');
+                applyTheme('light');
                 localStorage.setItem('theme', 'light');
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
             }
         });
     }
