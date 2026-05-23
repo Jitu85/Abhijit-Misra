@@ -173,6 +173,81 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCalendar();
     }
 
+    // 6.5 MenuMitra Slide to Enter Logic
+    const slideHandle = document.getElementById('slide-handle');
+    const slideTrack = slideHandle ? slideHandle.parentElement : null;
+    if (slideHandle && slideTrack) {
+        let isDragging = false;
+        let startX = 0;
+        let maxSlide = 0;
+
+        const startDrag = (e) => {
+            isDragging = true;
+            startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+            maxSlide = slideTrack.clientWidth - slideHandle.clientWidth - 4; // account for track border/padding
+            slideHandle.style.transition = 'none';
+        };
+
+        const drag = (e) => {
+            if (!isDragging) return;
+            const currentX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+            let deltaX = currentX - startX;
+            if (deltaX < 0) deltaX = 0;
+            if (deltaX > maxSlide) deltaX = maxSlide;
+
+            slideHandle.style.transform = `translateX(${deltaX}px)`;
+
+            // Fade the text out as the handle slides closer to the end
+            const opacity = 1 - (deltaX / maxSlide);
+            const textSpan = slideTrack.querySelector('.slide-text');
+            if (textSpan) textSpan.style.opacity = opacity;
+        };
+
+        const endDrag = () => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            // Retrieve actual translated X from style
+            const transformStyle = slideHandle.style.transform;
+            const match = transformStyle.match(/translateX\(([^px]+)px\)/);
+            const currentTransform = match ? parseFloat(match[1]) : 0;
+
+            if (currentTransform >= maxSlide - 10) {
+                // Slid successfully to the end
+                slideHandle.style.transition = 'transform 0.2s ease';
+                slideHandle.style.transform = `translateX(${maxSlide}px)`;
+                setTimeout(() => {
+                    window.open('http://menu-mitra.vercel.app', '_blank');
+                    // Reset handle
+                    slideHandle.style.transition = 'transform 0.3s ease';
+                    slideHandle.style.transform = 'translateX(0)';
+                    const textSpan = slideTrack.querySelector('.slide-text');
+                    if (textSpan) {
+                        textSpan.style.transition = 'opacity 0.3s ease';
+                        textSpan.style.opacity = 1;
+                    }
+                }, 300);
+            } else {
+                // Snap back to start
+                slideHandle.style.transition = 'transform 0.3s ease';
+                slideHandle.style.transform = 'translateX(0)';
+                const textSpan = slideTrack.querySelector('.slide-text');
+                if (textSpan) {
+                    textSpan.style.transition = 'opacity 0.3s ease';
+                    textSpan.style.opacity = 1;
+                }
+            }
+        };
+
+        slideHandle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('mouseup', endDrag);
+
+        slideHandle.addEventListener('touchstart', startDrag);
+        window.addEventListener('touchmove', drag, { passive: true });
+        window.addEventListener('touchend', endDrag);
+    }
+
     // 7. Intersection Observer for animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

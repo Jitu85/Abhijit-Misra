@@ -200,11 +200,32 @@ h1, h2, h3, h4 {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    color: var(--text-primary);
+    letter-spacing: 1.5px;
     text-decoration: none;
-    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ffe066 0%, #f5af19 50%, #e65c00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3));
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(-1deg);
+    filter: drop-shadow(0px 4px 10px rgba(245, 175, 25, 0.4));
+}
+
+[data-theme="light"] .logo {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #00c6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+}
+
+[data-theme="light"] .logo:hover {
+    filter: drop-shadow(0px 3px 8px rgba(42, 82, 152, 0.3));
 }
 
 .nav-links {
@@ -874,15 +895,117 @@ h1, h2, h3, h4 {
     font-size: 0.9rem;
 }
 
-/* --- Calendar Widget --- */
-.calendar-wrapper {
+/* --- About Section Widgets --- */
+.about-widgets-container {
+    display: flex;
+    gap: 2rem;
     margin-top: 2.5rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.calendar-wrapper {
+    flex: 1 1 320px;
+    max-width: 350px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 15px;
     padding: 1.5rem;
-    max-width: 350px;
     backdrop-filter: blur(5px);
+}
+
+.menu-mitra-box {
+    flex: 1 1 320px;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-mitra-box h3 {
+    font-size: 1.25rem;
+    color: #f5af19; /* Golden Accent matching logo */
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu-mitra-box p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Slide to Enter CSS */
+.slide-to-enter-container {
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
+
+.slide-track {
+    position: relative;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+}
+
+.slide-handle {
+    position: absolute;
+    left: 2px;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--accent-color), var(--highlight));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: grab;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease;
+}
+
+.slide-handle:active {
+    cursor: grabbing;
+}
+
+.slide-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    pointer-events: none;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+[data-theme="light"] .menu-mitra-box {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .menu-mitra-box h3 {
+    color: #2a5298; /* Sapphire/Royal Blue matching light logo */
+}
+
+[data-theme="light"] .slide-track {
+    background: rgba(0, 0, 0, 0.05);
 }
 
 .calendar-header {
