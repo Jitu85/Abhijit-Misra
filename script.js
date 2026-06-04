@@ -248,6 +248,23 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('touchend', endDrag);
     }
 
+    // 6.6 Quiz Zone Switch Logic
+    const quizSwitch = document.getElementById('quiz-enter-switch');
+    if (quizSwitch) {
+        quizSwitch.addEventListener('change', () => {
+            if (quizSwitch.checked) {
+                // Open KidQuiz in a new tab after toggle animation completes
+                setTimeout(() => {
+                    window.open('https://jitu-quiz.vercel.app/', '_blank');
+                    // Reset the switch back to off
+                    setTimeout(() => {
+                        quizSwitch.checked = false;
+                    }, 500);
+                }, 350);
+            }
+        });
+    }
+
     // 7. Intersection Observer for animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
