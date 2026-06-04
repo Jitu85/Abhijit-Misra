@@ -466,27 +466,37 @@ nothing to commit, working tree clean (ready for the AI era).`;
         });
     }
 
-    // 15. 3D Tilt Effect for Project Cards
-    const cards = document.querySelectorAll('.project-card');
-    if (supportsHover && cards.length > 0) {
-        cards.forEach(card => {
+    // 15. 3D Tilt & Light Glare Effect for Cards
+    const tiltCards = document.querySelectorAll('.project-card, .menu-mitra-box, .quiz-zone-box');
+    if (supportsHover && tiltCards.length > 0) {
+        tiltCards.forEach(card => {
+            const isProjectCard = card.classList.contains('project-card');
+            
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
+                // Track mouse position within the card for the light reflection
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                // Max rotation values (degrees)
-                const maxRotationX = 10;
-                const maxRotationY = 10;
+                // Max tilt rotation in degrees
+                const maxRotationX = 8;
+                const maxRotationY = 8;
                 
                 const rotateX = ((centerY - y) / centerY) * maxRotationX;
                 const rotateY = ((x - centerX) / centerX) * maxRotationY;
                 
-                // Combine the standard translateY(-15px) lift from hover with the 3D tilt
-                card.style.transform = `perspective(1000px) translateY(-15px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+                // Lift project cards (-15px translateY) + tilt; tilt widgets in-place
+                if (isProjectCard) {
+                    card.style.transform = `perspective(1000px) translateY(-15px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+                } else {
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+                }
                 card.style.transition = 'transform 0.1s ease-out';
             });
             
