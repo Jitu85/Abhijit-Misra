@@ -392,4 +392,112 @@ nothing to commit, working tree clean (ready for the AI era).`;
             }
         });
     });
+
+    // 14. Custom Cursor Tracking & Elastic Easing
+    const cursor = document.getElementById('custom-cursor');
+    const cursorGlow = document.getElementById('custom-cursor-glow');
+    
+    // Only initialize if the user is on a device that supports hover
+    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    
+    if (supportsHover && cursor && cursorGlow) {
+        let mouseX = -100;
+        let mouseY = -100;
+        let cursorX = -100;
+        let cursorY = -100;
+        let glowX = -100;
+        let glowY = -100;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            // Spring/Elastic Easing formulas
+            cursorX += (mouseX - cursorX) * 0.28;
+            cursorY += (mouseY - cursorY) * 0.28;
+            
+            glowX += (mouseX - glowX) * 0.12;
+            glowY += (mouseY - glowY) * 0.12;
+
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
+            
+            cursorGlow.style.left = `${glowX}px`;
+            cursorGlow.style.top = `${glowY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Mouse enters/leaves interactive elements to scale up the cursor
+        const hoverSelectors = 'a, button, input, textarea, select, .slide-handle, .toggle-slider, .theme-toggle, .calendar-nav button, .back-to-top';
+        
+        // Use event delegation on document body to capture dynamically rendered elements too
+        document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest(hoverSelectors)) {
+                cursor.classList.add('cursor-hover');
+                cursorGlow.classList.add('glow-hover');
+            }
+        });
+
+        document.body.addEventListener('mouseout', (e) => {
+            const hoverTarget = e.target.closest(hoverSelectors);
+            if (hoverTarget) {
+                // Ensure we are actually leaving the element boundary
+                const relatedTarget = e.relatedTarget;
+                if (!relatedTarget || !relatedTarget.closest(hoverSelectors)) {
+                    cursor.classList.remove('cursor-hover');
+                    cursorGlow.classList.remove('glow-hover');
+                }
+            }
+        });
+
+        // Hide cursor when leaving screen boundaries
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+            cursorGlow.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+            cursorGlow.style.opacity = '1';
+        });
+    }
+
+    // 15. 3D Tilt Effect for Project Cards
+    const cards = document.querySelectorAll('.project-card');
+    if (supportsHover && cards.length > 0) {
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Max rotation values (degrees)
+                const maxRotationX = 10;
+                const maxRotationY = 10;
+                
+                const rotateX = ((centerY - y) / centerY) * maxRotationX;
+                const rotateY = ((x - centerX) / centerX) * maxRotationY;
+                
+                // Combine the standard translateY(-15px) lift from hover with the 3D tilt
+                card.style.transform = `perspective(1000px) translateY(-15px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+                card.style.transition = 'transform 0.1s ease-out';
+            });
+            
+            card.style.transformStyle = 'preserve-3d';
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease';
+                card.style.transform = 'perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+    }
 });
+
+
