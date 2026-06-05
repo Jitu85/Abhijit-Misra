@@ -3,192 +3,1246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhijit Kumar Misra | Branding</title>
+    <meta name="description" content="Digital Brand Card of Abhijit Kumar Misra (Jitu) - Sleek, mobile-optimized hub for professional branding, utilities, and social links.">
+    <meta name="keywords" content="Abhijit Kumar Misra, Jitu, Branding Card, Digital Business Card, Web Developer Portfolio">
+    <meta name="author" content="Abhijit Kumar Misra">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Abhijit Kumar Misra | Digital Brand Card">
+    <meta property="og:description" content="Sleek, mobile-optimized business card and quick links hub.">
+    <meta property="og:image" content="assets/preview-image.jpg">
+
+    <title>Abhijit Kumar Misra | Brand Card</title>
+    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --bg-color: #0b0f19;
+            --bg-color: #080c14;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
             --highlight: #8b5cf6;
-            --card-bg: rgba(30, 41, 59, 0.5);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(15, 23, 42, 0.45);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --item-bg: rgba(255, 255, 255, 0.03);
+            --item-hover: rgba(255, 255, 255, 0.07);
+            --modal-bg: rgba(15, 23, 42, 0.85);
+            --glow-opacity: 0.35;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --status-bg: rgba(16, 185, 129, 0.15);
+            --status-text: #10b981;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --highlight: #7c3aed;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(15, 23, 42, 0.08);
+            --item-bg: rgba(0, 0, 0, 0.03);
+            --item-hover: rgba(0, 0, 0, 0.06);
+            --modal-bg: rgba(255, 255, 255, 0.9);
+            --glow-opacity: 0.15;
+            --shadow-color: rgba(15, 23, 42, 0.1);
+            --status-bg: rgba(5, 150, 105, 0.1);
+            --status-text: #059669;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
+            position: relative;
+            padding: 1.5rem;
+            transition: background-color 0.5s ease, color 0.3s ease;
         }
 
-        .background {
-            position: absolute;
+        /* Ambient animated backgrounds */
+        .ambient-bg {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            pointer-events: none;
         }
 
-        .glow {
+        .glow-circle {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
+            filter: blur(120px);
+            opacity: var(--glow-opacity);
+            transition: opacity 0.5s ease;
         }
 
         .glow-1 {
-            top: 20%;
-            left: 20%;
-            width: 40vw;
-            height: 40vw;
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
             background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            animation: floatGlow1 20s infinite alternate ease-in-out;
         }
 
         .glow-2 {
-            bottom: 20%;
-            right: 20%;
-            width: 40vw;
-            height: 40vw;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
             background: radial-gradient(circle, var(--highlight) 0%, transparent 70%);
+            animation: floatGlow2 25s infinite alternate ease-in-out;
         }
 
-        .card {
+        @keyframes floatGlow1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10vw, 8vh) scale(1.15); }
+        }
+
+        @keyframes floatGlow2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-8vw, -12vh) scale(0.9); }
+        }
+
+        /* Subtle Noise Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Card Container */
+        .brand-card-container {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 90%;
-            animation: fadeIn 1s ease-out;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 30px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 30px 60px -15px var(--shadow-color);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 2.2rem 1.8rem;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Card Header Utilities */
+        .card-top-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
         }
 
-        /* Mobile Optimization: Prevent Black Screen Rendering */
-        @media (max-width: 768px) {
-            body {
-                overflow-y: auto;
-                background: #0b0f19; /* Solid fallback */
-            }
-            .glow {
-                display: none; /* Blurs are the main cause of mobile black screens */
-            }
-            .card {
-                backdrop-filter: none !important;
-                -webkit-backdrop-filter: none !important;
-                background: #1e293b;
-                padding: 2rem 1.5rem;
-                margin: 20px;
-            }
-        }
-
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent-color), var(--highlight));
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
+        .action-icon-btn {
+            background: var(--item-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        h1 {
-            margin: 0;
-            font-size: 1.8rem;
+        .action-icon-btn:hover {
+            background: var(--item-hover);
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .action-icon-btn:active {
+            transform: translateY(1px);
+        }
+
+        .local-clock {
+            font-size: 0.75rem;
+            font-family: monospace;
+            font-weight: 600;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
+            background: var(--item-bg);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        /* Profile Block */
+        .profile-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 115px;
+            height: 115px;
+            margin-bottom: 1.2rem;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-color), var(--highlight), #10b981);
+            background-size: 300% 300%;
+            animation: gradientBorder 6s infinite alternate ease-in-out;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-color);
+            transition: border-color 0.5s ease;
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: #10b981;
+            color: white;
+            border: 3px solid var(--bg-color);
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: border-color 0.5s ease;
+        }
+
+        .profile-name {
+            font-size: 1.65rem;
             font-weight: 800;
-            background: linear-gradient(to right, var(--accent-color), var(--highlight));
+            letter-spacing: -0.5px;
+            margin-bottom: 0.25rem;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .tagline {
+        .profile-title {
+            font-size: 0.9rem;
+            font-weight: 400;
             color: var(--text-secondary);
-            margin: 0.5rem 0 2rem;
-            font-weight: 300;
-            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            max-width: 320px;
         }
 
-        .links {
+        .status-badge {
+            background-color: var(--status-bg);
+            color: var(--status-text);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--status-text);
+            border-radius: 50%;
+            animation: pulseGlow 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(0.9); opacity: 0.4; }
+            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 8px var(--status-text); }
+            100% { transform: scale(0.9); opacity: 0.4; }
+        }
+
+        /* Quick Action Grid */
+        .quick-actions-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .quick-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--item-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 0.85rem 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .quick-action-btn i {
+            font-size: 1.15rem;
+            margin-bottom: 0.45rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .quick-action-btn span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .quick-action-btn:hover {
+            background: var(--item-hover);
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.12);
+        }
+
+        .quick-action-btn:hover i {
+            transform: scale(1.15);
+            color: var(--highlight);
+        }
+
+        .quick-action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Accordion Structure */
+        .link-hub-sections {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
-        .link-btn {
-            padding: 0.8rem;
-            border-radius: 12px;
-            text-decoration: none;
+        .accordion-item {
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            background: var(--item-bg);
+            overflow: hidden;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .accordion-item.active {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            border: none;
+            outline: none;
             color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-            font-weight: 500;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
         }
 
-        .link-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
-            border-color: var(--accent-color);
+        .accordion-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .footer {
-            margin-top: 2.5rem;
+        .accordion-header-title i {
+            color: var(--accent-color);
+            font-size: 1.05rem;
+        }
+
+        .accordion-chevron {
             font-size: 0.8rem;
             color: var(--text-secondary);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        .developed-by {
-            font-weight: 600;
+        .accordion-item.active .accordion-chevron {
+            transform: rotate(180deg);
+            color: var(--accent-color);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-content-inner {
+            padding: 0 1.1rem 1.1rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        /* Hub Links */
+        .hub-link-card {
+            display: flex;
+            align-items: center;
+            background: var(--item-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 0.85rem 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hub-link-icon {
+            font-size: 1.2rem;
+            width: 38px;
+            height: 38px;
+            background: var(--item-hover);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.9rem;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .hub-link-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .hub-link-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .hub-link-desc {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .hub-link-arrow {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .badge-live {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-color);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 8px;
+            margin-left: auto;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* Card Hovers */
+        .hub-link-card:hover {
+            background: var(--item-hover);
+            border-color: var(--accent-color);
+            transform: translateX(4px);
+        }
+
+        .hub-link-card:hover .hub-link-icon {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .hub-link-card:hover .hub-link-arrow {
+            transform: translateX(3px);
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .card-footer {
+            margin-top: 2.2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--card-border);
+            padding-top: 1.2rem;
+        }
+
+        .author-highlight {
+            font-weight: 700;
             color: var(--highlight);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .author-highlight:hover {
+            color: var(--accent-color);
+        }
+
+        /* Modals & Dialogs */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .qr-modal-content {
+            background: var(--modal-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            width: 100%;
+            max-width: 360px;
+            padding: 2.2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .qr-modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--item-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        .qr-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .qr-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .qr-code-frame {
+            background: white;
+            padding: 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            position: relative;
+            min-height: 200px;
+            min-width: 200px;
+        }
+
+        .qr-code-frame img {
+            display: block;
+            width: 180px;
+            height: 180px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .qr-code-frame.loaded img {
+            opacity: 1;
+        }
+
+        /* Spinner for loading QR */
+        .qr-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        .qr-code-frame.loaded .qr-loader {
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Success Toast Banner */
+        .toast-banner {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px) scale(0.9);
+            background: rgba(16, 185, 129, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+            white-space: nowrap;
+        }
+
+        .toast-banner.active {
+            transform: translateX(-50%) translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        /* Mobile specific enhancements */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+                overflow-y: auto;
+            }
+
+            .glow-circle {
+                filter: blur(80px);
+            }
+
+            .brand-card-container {
+                padding: 1.8rem 1.3rem;
+                border-radius: 24px;
+            }
+
+            .quick-actions-bar {
+                gap: 0.5rem;
+            }
+
+            .quick-action-btn {
+                padding: 0.75rem 0.3rem;
+                border-radius: 14px;
+            }
+
+            .accordion-header {
+                padding: 0.9rem 1rem;
+            }
+
+            .accordion-content-inner {
+                padding: 0 0.9rem 0.9rem 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
+
+    <div class="ambient-bg">
+        <div class="glow-circle glow-1"></div>
+        <div class="glow-circle glow-2"></div>
     </div>
 
-    <div class="card">
-        <div class="profile-img">
-            <img src="assets/preview-image.jpg" alt="Abhijit Kumar Misra" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+    <!-- Main Card Container -->
+    <div class="brand-card-container" id="brand-card">
+        <!-- Top Bar Actions -->
+        <div class="card-top-actions">
+            <button class="action-icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                <i class="fas fa-sun" id="theme-icon"></i>
+            </button>
+            <div class="local-clock" id="clock-display">00:00:00</div>
+            <button class="action-icon-btn" id="qr-modal-btn" aria-label="Show QR Code">
+                <i class="fas fa-qrcode"></i>
+            </button>
         </div>
-        <h1>Jitu's Creative Works</h1>
-        <p class="tagline">Abhijit Kumar Misra | Computing Enthusiast</p>
 
-        <div class="links">
-            <a href="index.html" class="link-btn">View Full Portfolio</a>
-            <a href="https://github.com/Jitu-85" class="link-btn">GitHub Profile</a>
-            <a href="mailto:abhijit.jitu4u@rediffmail.com" class="link-btn">Email Me</a>
+        <!-- Profile Section -->
+        <div class="profile-block">
+            <div class="avatar-container">
+                <img src="assets/preview-image.jpg" alt="Abhijit Kumar Misra" class="avatar-img">
+                <div class="verified-badge" title="Verified Developer">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h1 class="profile-name">Abhijit Kumar Misra</h1>
+            <p class="profile-title">Computing Enthusiast & Economics Graduate</p>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Active / Open to collaborate</span>
+            </div>
         </div>
 
-        <div class="footer">
-            Developed by <span class="developed-by">Abhijit Kumar Misra</span>
+        <!-- Quick Connection Bar -->
+        <div class="quick-actions-bar">
+            <a href="tel:9401071282" class="quick-action-btn" id="call-btn">
+                <i class="fas fa-phone-alt"></i>
+                <span>Call</span>
+            </a>
+            <a href="mailto:abhijit.jitu4u@rediffmail.com" class="quick-action-btn" id="email-btn">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+            <button class="quick-action-btn" id="save-contact-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>Save Info</span>
+            </button>
+            <button class="quick-action-btn" id="share-card-btn">
+                <i class="fas fa-share-nodes"></i>
+                <span>Share</span>
+            </button>
+        </div>
+
+        <!-- Link Hub Accordions -->
+        <div class="link-hub-sections">
+            
+            <!-- Section 1: Main Portals -->
+            <div class="accordion-item active" id="sec-portals">
+                <button class="accordion-header" aria-expanded="true">
+                    <span class="accordion-header-title">
+                        <i class="fas fa-id-card"></i> Primary Channels
+                    </span>
+                    <i class="fas fa-chevron-down accordion-chevron"></i>
+                </button>
+                <div class="accordion-content" style="max-height: 500px;">
+                    <div class="accordion-content-inner">
+                        <a href="index.html" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Full Portfolio</span>
+                                <span class="hub-link-desc">Sabita Misra's & Jitu's Creative Works Hub</span>
+                            </div>
+                            <span class="badge-live">Live</span>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://github.com/Jitu-85" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">GitHub Profile</span>
+                                <span class="hub-link-desc">@Jitu-85 | Codebases & Open Source projects</span>
+                            </div>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Tools & Utilities -->
+            <div class="accordion-item" id="sec-utilities">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-header-title">
+                        <i class="fas fa-toolbox"></i> Web Apps & Utilities
+                    </span>
+                    <i class="fas fa-chevron-down accordion-chevron"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <a href="https://smart-calc-pro.surge.sh/" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Smart Calc Pro</span>
+                                <span class="hub-link-desc">Premium utility suite for advanced math</span>
+                            </div>
+                            <span class="badge-live">Live</span>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://practice-abacus.surge.sh/" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Practice Abacus</span>
+                                <span class="hub-link-desc">Mental math training application</span>
+                            </div>
+                            <span class="badge-live">Live</span>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="http://pdf-toolkit-live.web.app" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">PDF Toolkit</span>
+                                <span class="hub-link-desc">Comprehensive suite for PDF modifications</span>
+                            </div>
+                            <span class="badge-live">Live</span>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://planning-with-ai-8695e.web.app" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Planning with AI</span>
+                                <span class="hub-link-desc">Intelligent planning assistant tool</span>
+                            </div>
+                            <span class="badge-live">Live</span>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://purchase-calc.surge.sh/" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Quick Calc</span>
+                                <span class="hub-link-desc">Efficient transaction billing utility</span>
+                            </div>
+                            <span class="badge-live">Live</span>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Creative & Personal -->
+            <div class="accordion-item" id="sec-personal">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-header-title">
+                        <i class="fas fa-feather"></i> Creative & Personal
+                    </span>
+                    <i class="fas fa-chevron-down accordion-chevron"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <a href="https://jitu85.github.io/Personal/" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Colours of My Life</span>
+                                <span class="hub-link-desc">Personal blog, expressions, and creative hub</span>
+                            </div>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://sabitamisra.wordpress.com/" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Mom's Literary Blog</span>
+                                <span class="hub-link-desc">Explore Sabita Misra's WordPress creations</span>
+                            </div>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://jitu-85.github.io/my" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">All About Myself</span>
+                                <span class="hub-link-desc">Detailed personal stories and background</span>
+                            </div>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                        <a href="https://jitu.gt.tc" target="_blank" class="hub-link-card">
+                            <div class="hub-link-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="hub-link-info">
+                                <span class="hub-link-title">Purchase & Billing</span>
+                                <span class="hub-link-desc">ERP enterprise system (Internal testing)</span>
+                            </div>
+                            <i class="fas fa-chevron-right hub-link-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="card-footer">
+            <p>&copy; <span id="footer-year">2026</span> | Developed by <a href="index.html" class="author-highlight">Abhijit Kumar Misra</a></p>
         </div>
     </div>
+
+    <!-- QR Code Modal Overlay -->
+    <div class="modal-overlay" id="qr-modal-overlay">
+        <div class="qr-modal-content">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="qr-title">Scan QR Code</h2>
+            <p class="qr-desc">Scan this code with another device's camera to instantly view this brand card on mobile.</p>
+            <div class="qr-code-frame" id="qr-frame">
+                <div class="qr-loader"></div>
+                <!-- Dynamic QR code target img -->
+                <img id="qr-image" alt="Brand Card QR Code">
+            </div>
+            <div>
+                <button class="action-icon-btn" id="modal-copy-btn" style="width: auto; height: auto; padding: 0.6rem 1.2rem; display: inline-flex; gap: 8px; border-radius: 12px; margin: 0 auto;">
+                    <i class="fas fa-copy"></i>
+                    <span style="font-size: 0.85rem; font-weight: 600;">Copy Page URL</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Success Notification -->
+    <div class="toast-banner" id="toast-banner">
+        <i class="fas fa-circle-check"></i>
+        <span id="toast-message">Contact saved successfully!</span>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = document.getElementById('theme-icon');
+            const clockDisplay = document.getElementById('clock-display');
+            const footerYear = document.getElementById('footer-year');
+            const cardElement = document.getElementById('brand-card');
+            
+            const saveContactBtn = document.getElementById('save-contact-btn');
+            const shareCardBtn = document.getElementById('share-card-btn');
+            
+            const qrModalBtn = document.getElementById('qr-modal-btn');
+            const qrModalOverlay = document.getElementById('qr-modal-overlay');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalCopyBtn = document.getElementById('modal-copy-btn');
+            const qrFrame = document.getElementById('qr-frame');
+            const qrImage = document.getElementById('qr-image');
+            
+            const toastBanner = document.getElementById('toast-banner');
+            const toastMessage = document.getElementById('toast-message');
+
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            // Haptic feedback function
+            function triggerHaptic() {
+                if (navigator.vibrate) {
+                    navigator.vibrate(12);
+                }
+            }
+
+            // Set current footer year
+            footerYear.textContent = new Date().getFullYear();
+
+            // --- Theme Syncing ---
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    themeIcon.className = 'fas fa-moon';
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    themeIcon.className = 'fas fa-sun';
+                }
+            }
+
+            // Detect page host theme preference if set
+            const savedTheme = localStorage.getItem('theme');
+            const autoTheme = (new Date().getHours() >= 6 && new Date().getHours() < 18) ? 'light' : 'dark';
+            applyTheme(savedTheme || autoTheme);
+
+            themeToggleBtn.addEventListener('click', () => {
+                triggerHaptic();
+                let currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // --- Dynamic Clock ---
+            function updateClock() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                clockDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // --- Custom Toast Alert ---
+            function showToast(message) {
+                toastMessage.textContent = message;
+                toastBanner.classList.add('active');
+                setTimeout(() => {
+                    toastBanner.classList.remove('active');
+                }, 2800);
+            }
+
+            // --- Dynamic Accordion Collapse/Expand ---
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    triggerHaptic();
+                    const item = header.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const isActive = item.classList.contains('active');
+
+                    // Close all accordion items
+                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        const otherContent = otherItem.querySelector('.accordion-content');
+                        otherContent.style.maxHeight = null;
+                        otherItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                    });
+
+                    // Toggle clicked item
+                    if (!isActive) {
+                        item.classList.add('active');
+                        // Set max-height equal to scrollHeight to animate correctly
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        header.setAttribute('aria-expanded', 'true');
+                    } else {
+                        item.classList.remove('active');
+                        content.style.maxHeight = null;
+                        header.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // --- Dynamic vCard Downloader ---
+            saveContactBtn.addEventListener('click', () => {
+                triggerHaptic();
+                
+                // Formulate modern vCard file string
+                const vCardData = [
+                    'BEGIN:VCARD',
+                    'VERSION:3.0',
+                    'FN:Abhijit Kumar Misra',
+                    'N:Misra;Abhijit;Kumar;;',
+                    'ORG:Jitu\'s Creative Works',
+                    'TITLE:Computing Enthusiast & Economics Graduate',
+                    'TEL;TYPE=CELL;TYPE=PREF:+919401071282',
+                    'EMAIL;TYPE=INTERNET;TYPE=WORK:abhijit.jitu4u@rediffmail.com',
+                    'URL;TYPE=portfolio:https://jitu85.github.io/Abhijit-Misra/',
+                    'URL;TYPE=github:https://github.com/Jitu-85',
+                    'ADR;TYPE=HOME:;;Guwahati;Assam;;India',
+                    'NOTE:Web Creator | Developer of utility suites and interactive tools.',
+                    'END:VCARD'
+                ].join('\n');
+
+                const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Abhijit_Kumar_Misra.vcf';
+                document.body.appendChild(link);
+                link.click();
+                
+                // Cleanup
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                }, 200);
+
+                showToast('Contact file downloaded! Add to your Address Book.');
+            });
+
+            // --- Mobile Share Handler ---
+            shareCardBtn.addEventListener('click', async () => {
+                triggerHaptic();
+                const shareData = {
+                    title: 'Abhijit Kumar Misra - Brand Card',
+                    text: 'Explore professional links, utilities, and branding portals of Abhijit Kumar Misra (Jitu).',
+                    url: window.location.href
+                };
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        // User cancelled or share failed, fallback to clipboard
+                        copyToClipboard();
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => {
+                        showToast('Link copied to clipboard! Share it anywhere.');
+                    })
+                    .catch(() => {
+                        showToast('Failed to copy. URL: ' + window.location.href);
+                    });
+            }
+
+            modalCopyBtn.addEventListener('click', () => {
+                triggerHaptic();
+                copyToClipboard();
+            });
+
+            // --- QR Code Modal ---
+            function openQRModal() {
+                triggerHaptic();
+                qrModalOverlay.classList.add('active');
+                
+                // Generate QR server URL
+                const currentUrl = encodeURIComponent(window.location.href);
+                const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${currentUrl}`;
+                
+                // Preload image
+                qrFrame.classList.remove('loaded');
+                qrImage.src = qrApiUrl;
+                
+                qrImage.onload = () => {
+                    qrFrame.classList.add('loaded');
+                };
+            }
+
+            function closeQRModal() {
+                qrModalOverlay.classList.remove('active');
+            }
+
+            qrModalBtn.addEventListener('click', openQRModal);
+            modalCloseBtn.addEventListener('click', closeQRModal);
+            qrModalOverlay.addEventListener('click', (e) => {
+                if (e.target === qrModalOverlay) {
+                    closeQRModal();
+                }
+            });
+
+            // ESC key closes modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeQRModal();
+                }
+            });
+
+            // --- 3D Card Tilt & Spotlight Effect (Desktop) ---
+            const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            
+            if (supportsHover && cardElement) {
+                cardElement.addEventListener('mousemove', (e) => {
+                    const rect = cardElement.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const maxTilt = 5; // Rotation degrees
+                    const rotateX = ((centerY - y) / centerY) * maxTilt;
+                    const rotateY = ((x - centerX) / centerX) * maxTilt;
+                    
+                    cardElement.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
+                    cardElement.style.transition = 'transform 0.05s ease-out';
+                });
+
+                cardElement.addEventListener('mouseleave', () => {
+                    cardElement.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                    cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                });
+            }
+
+            // Adjust first accordion active max-height on load
+            const activeAccordionContent = document.querySelector('.accordion-item.active .accordion-content');
+            if (activeAccordionContent) {
+                activeAccordionContent.style.maxHeight = activeAccordionContent.scrollHeight + 'px';
+            }
+        });
+    </script>
 </body>
 </html>
