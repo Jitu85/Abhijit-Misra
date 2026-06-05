@@ -435,10 +435,40 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="year"></span> Abhijit Kumar Misra. Designed & Built with ❤️</p>
+        <div class="container footer-container">
+            <p class="footer-copyright">&copy; <span id="year"></span> Abhijit Kumar Misra. Designed & Built with ❤️</p>
+        </div>
+        <div class="footer-counter-wrapper">
+            <button id="counter-btn" class="counter-btn" aria-label="View Visitor Count">
+                <i class="fas fa-eye"></i> Visitors Count
+            </button>
         </div>
     </footer>
+
+    <!-- Visitor Counter Modal -->
+    <div class="counter-modal" id="counter-modal">
+        <div class="counter-modal-content">
+            <button class="counter-modal-close" id="counter-modal-close" aria-label="Close Modal">&times;</button>
+            <h3><i class="fas fa-chart-line"></i> Visitor Analytics</h3>
+            
+            <div id="counter-auth-section">
+                <p>Please enter password to view stats:</p>
+                <div class="password-input-group">
+                    <input type="password" id="counter-password" placeholder="Enter Password">
+                    <button id="counter-submit-btn">Unlock</button>
+                </div>
+                <p id="counter-error" class="counter-error-msg"></p>
+            </div>
+
+            <div id="counter-stats-section" style="display: none;">
+                <div class="stats-display">
+                    <span class="stats-label">Total Site Visits</span>
+                    <span class="stats-value" id="stats-visit-count">---</span>
+                </div>
+                <p class="stats-footer">Tracking active since June 2026</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Branding Badge -->
     <a href="branding.html" class="branding-badge">
