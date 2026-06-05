@@ -362,6 +362,19 @@ nothing to commit, working tree clean (ready for the AI era).`;
         }, false);
     }
 
+    // 12.5 Load resume iframe src only on desktop to prevent automatic downloads on mobile devices
+    const resumeIframe = document.getElementById('resume-iframe');
+    function loadResumeIframe() {
+        if (resumeIframe && window.innerWidth > 768 && !resumeIframe.getAttribute('src')) {
+            const dataSrc = resumeIframe.getAttribute('data-src');
+            if (dataSrc) {
+                resumeIframe.setAttribute('src', dataSrc);
+            }
+        }
+    }
+    loadResumeIframe();
+    window.addEventListener('resize', loadResumeIframe);
+
     // 13. UI/UX Enhancements: Back to Top & Active Link Tracking
     const backToTopBtn = document.getElementById('back-to-top');
     const sections = document.querySelectorAll('section, header');

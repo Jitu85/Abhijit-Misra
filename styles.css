@@ -952,7 +952,7 @@ h1, h2, h3, h4 {
 
 .footer-counter-wrapper {
     position: absolute;
-    right: 2rem;
+    left: 2rem;
 }
 
 .counter-btn {
