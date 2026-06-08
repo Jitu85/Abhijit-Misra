@@ -317,6 +317,11 @@ h1, h2, h3, h4 {
     position: relative;
 }
 
+.nav-links a i {
+    margin-right: 6px;
+    font-size: 0.95em;
+}
+
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -444,6 +449,18 @@ h1, h2, h3, h4 {
     background: linear-gradient(135deg, #ff0080, #7928ca);
     filter: brightness(1.1);
     box-shadow: 0 6px 20px rgba(255, 0, 128, 0.6);
+}
+
+.market-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    border: none;
+}
+
+.market-btn:hover {
+    background: linear-gradient(135deg, #10b981, #059669);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
 }
 
 .btn {
@@ -936,6 +953,7 @@ h1, h2, h3, h4 {
     border-top: 1px solid var(--glass-border);
     color: var(--text-secondary);
     font-size: 0.9rem;
+    position: relative;
 }
 
 .footer-container {
@@ -952,7 +970,9 @@ h1, h2, h3, h4 {
 
 .footer-counter-wrapper {
     position: absolute;
-    left: 2rem;
+    right: 12.5rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .counter-btn {
@@ -1142,6 +1162,10 @@ h1, h2, h3, h4 {
     
     .footer-counter-wrapper {
         position: static;
+        transform: none;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
     }
     
     .counter-modal-content {
