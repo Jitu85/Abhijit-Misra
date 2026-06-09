@@ -474,55 +474,58 @@
             </div>
 
             <div id="counter-stats-section" style="display: none;">
-                <!-- Main Metrics Grid -->
-                <div class="analytics-metrics-grid">
-                    <div class="stats-card-mini">
-                        <i class="fas fa-users icon-blue"></i>
-                        <span class="stats-label">Total Visits</span>
-                        <span class="stats-value-mini" id="stats-visit-count">---</span>
+                <!-- Main Indicator Card -->
+                <div class="analytics-main-card">
+                    <div class="main-card-icon">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
+                    <div class="main-card-info">
+                        <span class="stats-label">Total Site Visits</span>
+                        <span class="stats-value-large" id="stats-visit-count">---</span>
+                    </div>
+                </div>
+
+                <!-- Secondary Metrics Row -->
+                <div class="analytics-row-grid">
                     <div class="stats-card-mini">
-                        <i class="fas fa-user-check icon-green"></i>
-                        <span class="stats-label">Unique Visitors</span>
+                        <span class="stats-label"><i class="fas fa-user-check icon-green"></i> Unique</span>
                         <span class="stats-value-mini" id="stats-unique-count">---</span>
                     </div>
                     <div class="stats-card-mini">
-                        <i class="fas fa-redo icon-purple"></i>
-                        <span class="stats-label">Returning Visits</span>
+                        <span class="stats-label"><i class="fas fa-redo icon-purple"></i> Returning</span>
                         <span class="stats-value-mini" id="stats-returning-count">---</span>
                     </div>
                 </div>
 
-                <!-- Session Stats -->
-                <div class="analytics-sub-section">
-                    <h4><i class="fas fa-clock"></i> Active Session Info</h4>
-                    <div class="session-stats-grid">
-                        <div class="session-stat-item">
-                            <span class="session-stat-label">Session Page Views</span>
-                            <span class="session-stat-value" id="session-page-views">1</span>
+                <!-- Session & Specs Info Panels -->
+                <div class="analytics-panels-grid">
+                    <!-- Session Panel -->
+                    <div class="analytics-panel">
+                        <h4><i class="fas fa-clock icon-blue"></i> Session Info</h4>
+                        <div class="panel-item">
+                            <span class="panel-item-label">Page Views</span>
+                            <span class="panel-item-val" id="session-page-views">1</span>
                         </div>
-                        <div class="session-stat-item">
-                            <span class="session-stat-label">Time on Site</span>
-                            <span class="session-stat-value" id="session-time-spent">0m 0s</span>
+                        <div class="panel-item">
+                            <span class="panel-item-label">Time on Site</span>
+                            <span class="panel-item-val" id="session-time-spent">0m 0s</span>
                         </div>
                     </div>
-                </div>
 
-                <!-- System Specs -->
-                <div class="analytics-sub-section">
-                    <h4><i class="fas fa-laptop-code"></i> Your System Specs</h4>
-                    <div class="system-specs-list">
-                        <div class="spec-item">
-                            <span class="spec-label"><i class="fas fa-window-restore"></i> Browser</span>
-                            <span class="spec-value" id="spec-browser">---</span>
+                    <!-- Specs Panel -->
+                    <div class="analytics-panel">
+                        <h4><i class="fas fa-laptop-code icon-orange"></i> Your Specs</h4>
+                        <div class="panel-item">
+                            <span class="panel-item-label">OS</span>
+                            <span class="panel-item-val" id="spec-os">---</span>
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label"><i class="fas fa-desktop"></i> Operating System</span>
-                            <span class="spec-value" id="spec-os">---</span>
+                        <div class="panel-item">
+                            <span class="panel-item-label">Browser</span>
+                            <span class="panel-item-val" id="spec-browser">---</span>
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label"><i class="fas fa-expand"></i> Screen Resolution</span>
-                            <span class="spec-value" id="spec-resolution">---</span>
+                        <div class="spec-screen-item">
+                            <span class="panel-item-label">Screen</span>
+                            <span class="panel-item-val" id="spec-resolution">---</span>
                         </div>
                     </div>
                 </div>
