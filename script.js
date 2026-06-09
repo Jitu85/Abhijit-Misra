@@ -522,28 +522,66 @@ nothing to commit, working tree clean (ready for the AI era).`;
         });
     }
 
+    // Session Views & Time Tracking
+    let sessionViews = parseInt(sessionStorage.getItem('session_views') || '0');
+    sessionViews++;
+    sessionStorage.setItem('session_views', sessionViews);
+    const sessionStartTime = Date.now();
+
     // 16. Visitor Counter Logic (api.counterapi.dev)
     let visitCount = 0;
+    let uniqueCount = 0;
     
     // Silent increment on page load
     async function incrementCounter() {
+        const isReturning = localStorage.getItem('returning_visitor') === 'true';
         try {
-            // Using public, privacy-friendly counter api dev
-            const response = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/visits/up');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            // Increment total visits
+            const responseTotal = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/visits/up');
+            let totalData = {};
+            if (responseTotal.ok) {
+                totalData = await responseTotal.json();
             }
-            const data = await response.json();
-            if (data && data.count) {
-                visitCount = data.count;
+
+            let uniqueData = {};
+            if (!isReturning) {
+                // First time visitor: increment unique count
+                localStorage.setItem('returning_visitor', 'true');
+                const responseUnique = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/unique-visits/up');
+                if (responseUnique.ok) {
+                    uniqueData = await responseUnique.json();
+                }
+            } else {
+                // Returning visitor: read unique count without incrementing
+                const responseUnique = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/unique-visits');
+                if (responseUnique.ok) {
+                    uniqueData = await responseUnique.json();
+                }
+            }
+
+            if (totalData && totalData.count) {
+                visitCount = totalData.count;
+            }
+            if (uniqueData && uniqueData.count) {
+                uniqueCount = uniqueData.count;
             }
         } catch (err) {
             console.warn('Counter API blocked or offline. Using localStorage fallback.', err);
             // Fallback: simulate visits locally so it never breaks
-            let localCount = parseInt(localStorage.getItem('local_visits') || '184');
-            localCount++;
-            localStorage.setItem('local_visits', localCount);
-            visitCount = localCount;
+            let localTotal = parseInt(localStorage.getItem('local_visits') || '184');
+            let localUnique = parseInt(localStorage.getItem('local_unique_visits') || '112');
+
+            localTotal++;
+            localStorage.setItem('local_visits', localTotal);
+
+            if (!isReturning) {
+                localStorage.setItem('returning_visitor', 'true');
+                localUnique++;
+                localStorage.setItem('local_unique_visits', localUnique);
+            }
+
+            visitCount = localTotal;
+            uniqueCount = localUnique;
         }
     }
     incrementCounter();
@@ -558,7 +596,6 @@ nothing to commit, working tree clean (ready for the AI era).`;
     const counterError = document.getElementById('counter-error');
     const counterAuthSection = document.getElementById('counter-auth-section');
     const counterStatsSection = document.getElementById('counter-stats-section');
-    const statsVisitCount = document.getElementById('stats-visit-count');
 
     if (counterBtn && counterModal) {
         counterBtn.addEventListener('click', () => {
@@ -575,6 +612,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
             counterModal.classList.remove('active');
             counterPasswordInput.value = '';
             counterError.textContent = '';
+            stopSessionTimer();
         });
 
         counterModal.addEventListener('click', (e) => {
@@ -582,6 +620,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
                 counterModal.classList.remove('active');
                 counterPasswordInput.value = '';
                 counterError.textContent = '';
+                stopSessionTimer();
             }
         });
 
@@ -596,6 +635,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
             counterLockBtn.addEventListener('click', () => {
                 sessionStorage.removeItem('counter_auth');
                 showAuth();
+                stopSessionTimer();
             });
         }
     }
@@ -605,15 +645,25 @@ nothing to commit, working tree clean (ready for the AI era).`;
             counterAuthSection.style.display = 'block';
             counterStatsSection.style.display = 'none';
             counterPasswordInput.value = '';
+            stopSessionTimer();
             setTimeout(() => counterPasswordInput.focus(), 100);
         }
     }
 
     function showStats() {
-        if (counterAuthSection && counterStatsSection && statsVisitCount) {
+        if (counterAuthSection && counterStatsSection) {
             counterAuthSection.style.display = 'none';
             counterStatsSection.style.display = 'block';
-            statsVisitCount.textContent = visitCount || '---';
+
+            // Animate metrics rolling up dynamically
+            const returningCount = Math.max(0, visitCount - uniqueCount);
+            animateValue('stats-visit-count', 0, visitCount, 1200);
+            animateValue('stats-unique-count', 0, uniqueCount, 1200);
+            animateValue('stats-returning-count', 0, returningCount, 1200);
+
+            // Load session information and system configurations
+            updateSystemSpecs();
+            startSessionTimer();
         }
     }
 
@@ -628,6 +678,91 @@ nothing to commit, working tree clean (ready for the AI era).`;
                 counterPasswordInput.select();
             }
         }
+    }
+
+    // Dynamic Count-Up Animation
+    function animateValue(id, start, end, duration) {
+        const obj = document.getElementById(id);
+        if (!obj) return;
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.textContent = Math.floor(progress * (end - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                obj.textContent = end;
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Session Timer interval controls
+    let sessionTimerInterval = null;
+    function startSessionTimer() {
+        const timerEl = document.getElementById('session-time-spent');
+        if (!timerEl) return;
+        
+        stopSessionTimer();
+
+        const updateTimer = () => {
+            const elapsedMs = Date.now() - sessionStartTime;
+            const totalSeconds = Math.floor(elapsedMs / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            timerEl.textContent = `${minutes}m ${seconds}s`;
+        };
+        
+        updateTimer();
+        sessionTimerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function stopSessionTimer() {
+        if (sessionTimerInterval) {
+            clearInterval(sessionTimerInterval);
+            sessionTimerInterval = null;
+        }
+    }
+
+    // Parse system details for display
+    function updateSystemSpecs() {
+        const ua = navigator.userAgent;
+        let browserName = "Unknown Browser";
+        if (ua.indexOf("Firefox") > -1) {
+            browserName = "Mozilla Firefox";
+        } else if (ua.indexOf("SamsungBrowser") > -1) {
+            browserName = "Samsung Internet";
+        } else if (ua.indexOf("Opera") > -1 || ua.indexOf("OPR") > -1) {
+            browserName = "Opera";
+        } else if (ua.indexOf("Trident") > -1) {
+            browserName = "Internet Explorer";
+        } else if (ua.indexOf("Edge") > -1 || ua.indexOf("Edg") > -1) {
+            browserName = "Microsoft Edge";
+        } else if (ua.indexOf("Chrome") > -1) {
+            browserName = "Google Chrome";
+        } else if (ua.indexOf("Safari") > -1) {
+            browserName = "Apple Safari";
+        }
+
+        let osName = "Unknown OS";
+        if (ua.indexOf("Win") > -1) osName = "Windows";
+        else if (ua.indexOf("Mac") > -1) osName = "macOS";
+        else if (ua.indexOf("Linux") > -1) osName = "Linux";
+        else if (ua.indexOf("Android") > -1) osName = "Android";
+        else if (ua.indexOf("like Mac") > -1) osName = "iOS";
+
+        const resolution = `${window.screen.width} x ${window.screen.height}`;
+
+        const browserEl = document.getElementById('spec-browser');
+        const osEl = document.getElementById('spec-os');
+        const resolutionEl = document.getElementById('spec-resolution');
+        const sessionPageViewsEl = document.getElementById('session-page-views');
+
+        if (browserEl) browserEl.textContent = browserName;
+        if (osEl) osEl.textContent = osName;
+        if (resolutionEl) resolutionEl.textContent = resolution;
+        if (sessionPageViewsEl) sessionPageViewsEl.textContent = sessionViews;
     }
 });
 
