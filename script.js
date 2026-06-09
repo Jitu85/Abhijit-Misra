@@ -554,6 +554,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
     const counterModalClose = document.getElementById('counter-modal-close');
     const counterPasswordInput = document.getElementById('counter-password');
     const counterSubmitBtn = document.getElementById('counter-submit-btn');
+    const counterLockBtn = document.getElementById('counter-lock-btn');
     const counterError = document.getElementById('counter-error');
     const counterAuthSection = document.getElementById('counter-auth-section');
     const counterStatsSection = document.getElementById('counter-stats-section');
@@ -590,6 +591,13 @@ nothing to commit, working tree clean (ready for the AI era).`;
                 verifyPassword();
             }
         });
+
+        if (counterLockBtn) {
+            counterLockBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('counter_auth');
+                showAuth();
+            });
+        }
     }
 
     function showAuth() {
