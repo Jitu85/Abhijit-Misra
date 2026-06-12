@@ -666,6 +666,43 @@ h1, h2, h3, h4 {
     font-weight: 600;
 }
 
+/* --- Interactive Card Styles --- */
+.stat-card.interactive-card {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card.interactive-card:hover {
+    transform: translateY(-8px);
+    border-color: transparent;
+    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(135deg, var(--accent-color), var(--highlight)) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+}
+
+.stat-card.interactive-card .card-link-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+    transition: all var(--transition-speed) ease;
+}
+
+.stat-card.interactive-card:hover .card-link-icon {
+    opacity: 1;
+    color: var(--accent-color);
+    transform: translate(2px, -2px) scale(1.1);
+}
+
 /* --- Resume Section --- */
 .resume-viewer-container {
     max-width: 900px;
