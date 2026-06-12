@@ -673,7 +673,8 @@ h1, h2, h3, h4 {
     overflow: hidden;
     display: block;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.03);
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('assets/card-backgrd.png') center/cover no-repeat;
     border: 1px solid var(--glass-border);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
