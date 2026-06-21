@@ -688,7 +688,7 @@ h1, h2, h3, h4 {
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
 }
 
-.stat-card.interactive-card .card-link-icon {
+..stat-card.interactive-card .card-link-icon {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -698,11 +698,11 @@ h1, h2, h3, h4 {
     transition: all var(--transition-speed) ease;
 }
 
-..stat-card.quiz-card {
+.stat-card.quiz-card {
     position: relative;
     min-height: 280px;
     background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15)),
-                url('assets/profile.png') center/cover no-repeat;
+                url('assets/preview-image.jpg') center/cover no-repeat;
     background-size: cover;
     background-position: center;
     color: #fff;
