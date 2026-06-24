@@ -636,8 +636,15 @@ h1, h2, h3, h4 {
 
 .about-stats {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.about-stats .stat-card {
+    flex: 1;
+    min-height: 260px;
 }
 
 .stat-card {
@@ -656,14 +663,16 @@ h1, h2, h3, h4 {
 
 .stat-card h3 {
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: #ffffff;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .stat-card p {
-    color: var(--highlight);
+    color: #ffffff;
     font-size: 0.9rem;
     font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* --- Interactive Card Styles --- */
@@ -711,86 +720,52 @@ h1, h2, h3, h4 {
 }
 
 .stat-card.quiz-card {
+    text-decoration: none;
     position: relative;
-    min-height: 280px;
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15)),
-                #cfe1f5 url('assets/Quiz.webp') center/cover no-repeat;
-    color: #fff;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     justify-content: center;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                #cfe1f5 url('assets/Quiz.webp') center/cover no-repeat;
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
     container-type: inline-size;
 }
 
-.stat-card.quiz-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 45%),
-                linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.7));
-    pointer-events: none;
+.stat-card.quiz-card h3 {
+    font-size: clamp(1.1rem, 6.5cqi, 1.5rem);
 }
 
-.stat-card.quiz-card .quiz-card-inner {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding: 2rem 1.5rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.quiz-subheading {
-    color: #fff;
+.stat-card.quiz-card p {
     font-size: clamp(0.75rem, 4.5cqi, 0.9rem);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-    text-align: center;
 }
 
-.stat-card.quiz-card .arrow-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4em;
-    padding: 0.4em 1em;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.32);
-    color: #fff;
-    font-size: clamp(0.65rem, 4.5cqi, 0.8rem);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+.stat-card.quiz-card:hover {
+    transform: translateY(-8px);
+    border-color: transparent;
+    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(135deg, var(--accent-color), var(--highlight)) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+}
+
+.stat-card.quiz-card .card-link-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
     transition: all var(--transition-speed) ease;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px);
-    white-space: nowrap;
-    width: auto;
-    max-width: 90%;
-    box-sizing: border-box;
 }
 
-.stat-card.quiz-card .arrow-btn:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.35);
-    border-color: rgba(255, 255, 255, 0.55);
-}
-
-.stat-card.quiz-card .arrow-btn .fas {
-    transition: transform 0.3s ease;
-}
-
-.stat-card.quiz-card .arrow-btn:hover .fas {
-    transform: translateX(4px);
+.stat-card.quiz-card:hover .card-link-icon {
+    opacity: 1;
+    color: var(--accent-color);
+    transform: translate(2px, -2px) scale(1.1);
 }
 
 
@@ -2268,10 +2243,10 @@ html {
         flex-direction: row;
         width: 100%;
         justify-content: center;
-        gap: 1.5rem;
+        gap: 1rem;
     }
     
-    .stat-card {
+    .about-stats .stat-card {
         flex: 1;
         min-height: 220px;
     }
@@ -2290,10 +2265,10 @@ html {
         flex-direction: column !important;
         align-items: center;
         width: 100%;
-        gap: 1.5rem;
+        gap: 1rem;
     }
     
-    .stat-card {
+    .about-stats .stat-card {
         width: 100%;
         max-width: 400px;
         min-height: 200px;
