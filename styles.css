@@ -551,6 +551,32 @@ h1, h2, h3, h4 {
     backdrop-filter: blur(10px);
 }
 
+@media (min-width: 769px) {
+    .about-content {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        grid-template-rows: auto auto;
+        align-items: start;
+    }
+    
+    .about-image {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .about-text {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+    
+    .about-stats {
+        grid-column: 1;
+        grid-row: 2;
+        flex-direction: column !important;
+        gap: 1.5rem;
+    }
+}
+
 /* --- Remarkable Visual Trust: Profile Photo --- */
 .about-image {
     flex: 0 0 320px;
@@ -703,7 +729,8 @@ h1, h2, h3, h4 {
 .stat-card.interactive-card:hover {
     transform: translateY(-8px);
     border-color: transparent;
-    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) padding-box,
+                url('assets/Game.webp') center/cover no-repeat padding-box,
                 linear-gradient(135deg, var(--accent-color), var(--highlight)) border-box;
     border: 1px solid transparent;
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
@@ -746,7 +773,8 @@ h1, h2, h3, h4 {
 .stat-card.quiz-card:hover {
     transform: translateY(-8px);
     border-color: transparent;
-    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) padding-box,
+                url('assets/Quiz.webp') center/cover no-repeat padding-box,
                 linear-gradient(135deg, var(--accent-color), var(--highlight)) border-box;
     border: 1px solid transparent;
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
