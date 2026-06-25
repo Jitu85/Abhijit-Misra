@@ -543,7 +543,7 @@ h1, h2, h3, h4 {
 .about-content {
     display: flex;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
     padding: 3rem;
@@ -551,30 +551,11 @@ h1, h2, h3, h4 {
     backdrop-filter: blur(10px);
 }
 
-@media (min-width: 769px) {
-    .about-content {
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        grid-template-rows: auto auto;
-        align-items: start;
-    }
-    
-    .about-image {
-        grid-column: 1;
-        grid-row: 1;
-    }
-    
-    .about-text {
-        grid-column: 2;
-        grid-row: 1 / span 2;
-    }
-    
-    .about-stats {
-        grid-column: 1;
-        grid-row: 2;
-        flex-direction: column !important;
-        gap: 1.5rem;
-    }
+.about-left {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 /* --- Remarkable Visual Trust: Profile Photo --- */
@@ -666,6 +647,7 @@ h1, h2, h3, h4 {
     gap: 1.5rem;
     width: 100%;
     justify-content: center;
+    margin-top: 2.5rem;
 }
 
 .about-stats .stat-card {
@@ -2265,6 +2247,14 @@ html {
     .about-content {
         flex-direction: column;
         padding: 2rem;
+    }
+    
+    .about-left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
     
     .about-stats {

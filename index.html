@@ -107,9 +107,32 @@
             <div class="container fade-in">
                 <h2 class="section-title">About <span>Me</span></h2>
                 <div class="about-content">
-                    <div class="about-image">
-                        <img src="assets/profile.png" alt="Abhijit Kumar Misra">
+                    <div class="about-left">
+                        <div class="about-image">
+                            <img src="assets/profile.png" alt="Abhijit Kumar Misra">
+                        </div>
+                        <!-- Calendar Widget -->
+                        <div class="calendar-wrapper">
+                            <div class="calendar-header">
+                                <h3 id="month-name">Month</h3>
+                                <div class="calendar-nav">
+                                    <button id="prev-month">&lt;</button>
+                                    <button id="next-month">&gt;</button>
+                                </div>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="day-label">Sun</div>
+                                <div class="day-label">Mon</div>
+                                <div class="day-label">Tue</div>
+                                <div class="day-label">Wed</div>
+                                <div class="day-label">Thu</div>
+                                <div class="day-label">Fri</div>
+                                <div class="day-label">Sat</div>
+                            </div>
+                            <div id="calendar-days" class="calendar-grid days"></div>
+                        </div>
                     </div>
+                    
                     <div class="about-text">
                         <h3>Abhijit Kumar Misra (Jitu)</h3>
                         <p>I am an enthusiastic computing lover. By education, I am a graduate in Economics, and I have completed various courses in Computer Science. Although I am not a certified programmer, I am an avid computer user. My journey began in the early stages of my school days, at a time when computers were a brand-new concept in our society.</p>
@@ -133,27 +156,6 @@
 
                         <!-- Widgets Side-by-Side Container -->
                         <div class="about-widgets-container">
-                            <!-- Calendar Widget -->
-                            <div class="calendar-wrapper">
-                                <div class="calendar-header">
-                                    <h3 id="month-name">Month</h3>
-                                    <div class="calendar-nav">
-                                        <button id="prev-month">&lt;</button>
-                                        <button id="next-month">&gt;</button>
-                                    </div>
-                                </div>
-                                <div class="calendar-grid">
-                                    <div class="day-label">Sun</div>
-                                    <div class="day-label">Mon</div>
-                                    <div class="day-label">Tue</div>
-                                    <div class="day-label">Wed</div>
-                                    <div class="day-label">Thu</div>
-                                    <div class="day-label">Fri</div>
-                                    <div class="day-label">Sat</div>
-                                </div>
-                                <div id="calendar-days" class="calendar-grid days"></div>
-                            </div>
-
                             <!-- MenuMitra Box -->
                             <div class="menu-mitra-box">
                                 <h3><i class="fas fa-utensils"></i> MenuMitra</h3>
@@ -181,18 +183,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="about-stats">
-                        <a href="https://jitu85.github.io/" target="_blank" class="stat-card interactive-card">
-                            <i class="fas fa-external-link-alt card-link-icon"></i>
-                            <h3>Kid's Playzone</h3>
-                            <p>Gaming Hub, Play &amp; Win</p>
-                        </a>
-                        <a href="https://jitu85.github.io/kimi-quiz/" target="_blank" class="stat-card quiz-card" aria-label="Open Quiz">
-                            <i class="fas fa-external-link-alt card-link-icon"></i>
-                            <h3>Olympiad Quiz</h3>
-                            <p>Quiz Zone, Test &amp; Learn</p>
-                        </a>
+
+                        <div class="about-stats">
+                            <a href="https://jitu85.github.io/" target="_blank" class="stat-card interactive-card">
+                                <i class="fas fa-external-link-alt card-link-icon"></i>
+                                <h3>Kid's Playzone</h3>
+                                <p>Gaming Hub, Play &amp; Win</p>
+                            </a>
+                            <a href="https://jitu85.github.io/kimi-quiz/" target="_blank" class="stat-card quiz-card" aria-label="Open Quiz">
+                                <i class="fas fa-external-link-alt card-link-icon"></i>
+                                <h3>Olympiad Quiz</h3>
+                                <p>Quiz Zone, Test &amp; Learn</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -404,6 +407,21 @@
                             <div class="project-links">
                                 <a href="https://jitu.gt.tc" target="_blank" class="btn primary-btn small-btn">Internal Testing</a>
                                 <span class="project-status">Under Process</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 10 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Education</span>
+                                <span class="tag">Firebase</span>
+                            </div>
+                            <h3>Merit Quest</h3>
+                            <p>An online knowledge test designed for primary school students to test themselves and win awards.</p>
+                            <div class="project-links">
+                                <a href="https://toolki-t.web.app/" target="_blank" class="btn primary-btn small-btn">Visit Site</a>
+                                <span class="project-status">Live</span>
                             </div>
                         </div>
                     </div>
