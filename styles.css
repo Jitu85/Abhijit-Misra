@@ -2083,7 +2083,7 @@ html {
     animation: pulse-glow 2s infinite;
 }
 
-/* --- Responsive Layout & Performance --- */
+/* --- Responsive Layout --- */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -2188,14 +2188,6 @@ html {
         background-color: #1e293b;
     }
 
-    [data-theme="light"] .about-content,
-    [data-theme="light"] .project-card,
-    [data-theme="light"] .skill-category,
-    [data-theme="light"] .contact-box,
-    [data-theme="light"] .branding-badge {
-        background-color: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-    }
 }
 
 @media (max-width: 576px) {
@@ -2212,6 +2204,19 @@ html {
     }
 }
 
+/* --- Responsive Theme Adjustments --- */
+@media (max-width: 768px) {
+    [data-theme="light"] .about-content,
+    [data-theme="light"] .project-card,
+    [data-theme="light"] .skill-category,
+    [data-theme="light"] .contact-box,
+    [data-theme="light"] .branding-badge {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* --- Performance & Motion Preferences --- */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;

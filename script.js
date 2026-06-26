@@ -274,7 +274,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.15 });
 
+    function revealVisibleFadeIns() {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+            if (isInView) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    requestAnimationFrame(revealVisibleFadeIns);
+    window.addEventListener('load', () => setTimeout(revealVisibleFadeIns, 100));
+    window.addEventListener('hashchange', () => setTimeout(revealVisibleFadeIns, 100));
 
     // 8. Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -409,10 +423,10 @@ nothing to commit, working tree clean (ready for the AI era).`;
     // 14. Custom Cursor Tracking & Elastic Easing
     const cursor = document.getElementById('custom-cursor');
     const cursorGlow = document.getElementById('custom-cursor-glow');
-    
+
     // Only initialize if the user is on a device that supports hover
     const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    
+
     if (supportsHover && cursor && cursorGlow) {
         let mouseX = -100;
         let mouseY = -100;
@@ -430,13 +444,13 @@ nothing to commit, working tree clean (ready for the AI era).`;
             // Spring/Elastic Easing formulas
             cursorX += (mouseX - cursorX) * 0.28;
             cursorY += (mouseY - cursorY) * 0.28;
-            
+
             glowX += (mouseX - glowX) * 0.12;
             glowY += (mouseY - glowY) * 0.12;
 
             cursor.style.left = `${cursorX}px`;
             cursor.style.top = `${cursorY}px`;
-            
+
             cursorGlow.style.left = `${glowX}px`;
             cursorGlow.style.top = `${glowY}px`;
 
@@ -446,7 +460,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
 
         // Mouse enters/leaves interactive elements to scale up the cursor
         const hoverSelectors = 'a, button, input, textarea, select, .slide-handle, .toggle-slider, .theme-toggle, .calendar-nav button, .back-to-top';
-        
+
         // Use event delegation on document body to capture dynamically rendered elements too
         document.body.addEventListener('mouseover', (e) => {
             if (e.target.closest(hoverSelectors)) {
@@ -484,26 +498,26 @@ nothing to commit, working tree clean (ready for the AI era).`;
     if (supportsHover && tiltCards.length > 0) {
         tiltCards.forEach(card => {
             const isProjectCard = card.classList.contains('project-card');
-            
+
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
+
                 // Track mouse position within the card for the light reflection
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
-                
+
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
+
                 // Max tilt rotation in degrees
                 const maxRotationX = 8;
                 const maxRotationY = 8;
-                
+
                 const rotateX = ((centerY - y) / centerY) * maxRotationX;
                 const rotateY = ((x - centerX) / centerX) * maxRotationY;
-                
+
                 // Lift project cards (-15px translateY) + tilt; tilt widgets in-place
                 if (isProjectCard) {
                     card.style.transform = `perspective(1000px) translateY(-15px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
@@ -512,9 +526,9 @@ nothing to commit, working tree clean (ready for the AI era).`;
                 }
                 card.style.transition = 'transform 0.1s ease-out';
             });
-            
+
             card.style.transformStyle = 'preserve-3d';
-            
+
             card.addEventListener('mouseleave', () => {
                 card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease';
                 card.style.transform = 'perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
@@ -531,57 +545,69 @@ nothing to commit, working tree clean (ready for the AI era).`;
     // 16. Visitor Counter Logic (api.counterapi.dev)
     let visitCount = 0;
     let uniqueCount = 0;
-    
+
+    const COUNTER_DEFAULTS = {
+        total: 184,
+        unique: 112
+    };
+
+    function getStoredCount(key, fallback) {
+        const value = parseInt(localStorage.getItem(key) || '', 10);
+        return Number.isFinite(value) ? value : fallback;
+    }
+
+    async function fetchCounter(path) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 3500);
+
+        try {
+            const response = await fetch(`https://api.counterapi.dev/v1/abhijit-misra-portfolio/${path}`, {
+                signal: controller.signal
+            });
+
+            if (!response.ok) {
+                throw new Error(`Counter request failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return Number.isFinite(data.count) ? data.count : null;
+        } finally {
+            clearTimeout(timeout);
+        }
+    }
+
+    function useLocalCounterFallback(isReturning) {
+        let localTotal = getStoredCount('local_visits', COUNTER_DEFAULTS.total);
+        let localUnique = getStoredCount('local_unique_visits', COUNTER_DEFAULTS.unique);
+
+        localTotal++;
+        localStorage.setItem('local_visits', localTotal);
+
+        if (!isReturning) {
+            localUnique++;
+            localStorage.setItem('local_unique_visits', localUnique);
+            localStorage.setItem('returning_visitor', 'true');
+        }
+
+        visitCount = localTotal;
+        uniqueCount = localUnique;
+    }
+
     // Silent increment on page load
     async function incrementCounter() {
         const isReturning = localStorage.getItem('returning_visitor') === 'true';
+
         try {
-            // Increment total visits
-            const responseTotal = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/visits/up');
-            let totalData = {};
-            if (responseTotal.ok) {
-                totalData = await responseTotal.json();
-            }
+            visitCount = await fetchCounter('visits/up') || getStoredCount('local_visits', COUNTER_DEFAULTS.total);
 
-            let uniqueData = {};
-            if (!isReturning) {
-                // First time visitor: increment unique count
-                localStorage.setItem('returning_visitor', 'true');
-                const responseUnique = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/unique-visits/up');
-                if (responseUnique.ok) {
-                    uniqueData = await responseUnique.json();
-                }
+            if (isReturning) {
+                uniqueCount = await fetchCounter('unique-visits') || getStoredCount('local_unique_visits', COUNTER_DEFAULTS.unique);
             } else {
-                // Returning visitor: read unique count without incrementing
-                const responseUnique = await fetch('https://api.counterapi.dev/v1/abhijit-misra-portfolio/unique-visits');
-                if (responseUnique.ok) {
-                    uniqueData = await responseUnique.json();
-                }
-            }
-
-            if (totalData && totalData.count) {
-                visitCount = totalData.count;
-            }
-            if (uniqueData && uniqueData.count) {
-                uniqueCount = uniqueData.count;
+                uniqueCount = await fetchCounter('unique-visits/up') || getStoredCount('local_unique_visits', COUNTER_DEFAULTS.unique + 1);
+                localStorage.setItem('returning_visitor', 'true');
             }
         } catch (err) {
-            console.warn('Counter API blocked or offline. Using localStorage fallback.', err);
-            // Fallback: simulate visits locally so it never breaks
-            let localTotal = parseInt(localStorage.getItem('local_visits') || '184');
-            let localUnique = parseInt(localStorage.getItem('local_unique_visits') || '112');
-
-            localTotal++;
-            localStorage.setItem('local_visits', localTotal);
-
-            if (!isReturning) {
-                localStorage.setItem('returning_visitor', 'true');
-                localUnique++;
-                localStorage.setItem('local_unique_visits', localUnique);
-            }
-
-            visitCount = localTotal;
-            uniqueCount = localUnique;
+            useLocalCounterFallback(isReturning);
         }
     }
     incrementCounter();
@@ -703,7 +729,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
     function startSessionTimer() {
         const timerEl = document.getElementById('session-time-spent');
         if (!timerEl) return;
-        
+
         stopSessionTimer();
 
         const updateTimer = () => {
@@ -713,7 +739,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
             const seconds = totalSeconds % 60;
             timerEl.textContent = `${minutes}m ${seconds}s`;
         };
-        
+
         updateTimer();
         sessionTimerInterval = setInterval(updateTimer, 1000);
     }
