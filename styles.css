@@ -149,6 +149,7 @@ h1, h2, h3, h4 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 2px;
 }
 
 .nav-time {
@@ -177,6 +178,19 @@ h1, h2, h3, h4 {
     filter: drop-shadow(0px 4px 10px rgba(245, 175, 25, 0.4));
 }
 
+.logo-fullname {
+    color: var(--text-secondary);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    padding: 3px 0;
+    border-top: 1px solid rgba(245, 175, 25, 0.55);
+    border-bottom: 1px solid rgba(245, 175, 25, 0.55);
+    white-space: nowrap;
+}
+
 [data-theme="light"] .logo {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #00c6ff 100%);
     -webkit-background-clip: text;
@@ -186,6 +200,11 @@ h1, h2, h3, h4 {
 
 [data-theme="light"] .logo:hover {
     filter: drop-shadow(0px 3px 8px rgba(42, 82, 152, 0.3));
+}
+
+[data-theme="light"] .logo-fullname {
+    border-top-color: rgba(42, 82, 152, 0.45);
+    border-bottom-color: rgba(42, 82, 152, 0.45);
 }
 
 .nav-links {
@@ -578,17 +597,15 @@ h1, h2, h3, h4 {
 }
 
 .about-stats {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
     width: 100%;
-    justify-content: center;
     margin-top: 2.5rem;
 }
 
 .about-stats .stat-card {
-    flex: 1;
-    min-height: 220px;
+    min-height: 240px;
 }
 
 .stat-card {
@@ -627,10 +644,12 @@ h1, h2, h3, h4 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    gap: 0.35rem;
     cursor: pointer;
-    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    padding-bottom: 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0.26) 100%),
                 #0b1766 url('assets/Game.webp') center/cover no-repeat;
     border: 1px solid var(--glass-border);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
@@ -648,7 +667,7 @@ h1, h2, h3, h4 {
 .stat-card.interactive-card:hover {
     transform: translateY(-8px);
     border-color: transparent;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) padding-box,
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.35) 48%, rgba(0, 0, 0, 0.18) 100%) padding-box,
                 url('assets/Game.webp') center/cover no-repeat padding-box,
                 linear-gradient(135deg, var(--accent-color), var(--highlight)) border-box;
     border: 1px solid transparent;
@@ -671,10 +690,12 @@ h1, h2, h3, h4 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    gap: 0.35rem;
     cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    padding-bottom: 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.26) 100%),
                 #cfe1f5 url('assets/Quiz.webp') center/cover no-repeat;
     border: 1px solid var(--glass-border);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
@@ -692,7 +713,7 @@ h1, h2, h3, h4 {
 .stat-card.quiz-card:hover {
     transform: translateY(-8px);
     border-color: transparent;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) padding-box,
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.35) 48%, rgba(0, 0, 0, 0.18) 100%) padding-box,
                 url('assets/Quiz.webp') center/cover no-repeat padding-box,
                 linear-gradient(135deg, var(--accent-color), var(--highlight)) border-box;
     border: 1px solid transparent;
@@ -1398,10 +1419,10 @@ h1, h2, h3, h4 {
 
 /* --- About Section Widgets --- */
 .about-widgets-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     margin-top: 2.5rem;
-    flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
 }
@@ -1418,8 +1439,6 @@ h1, h2, h3, h4 {
 
 .menu-mitra-box,
 .quiz-zone-box {
-    flex: 1 1 320px;
-    max-width: 350px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 15px;
@@ -2113,15 +2132,17 @@ html {
         align-items: center;
     }
 
+    .about-widgets-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
     .about-stats {
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
 
     .about-stats .stat-card {
-        flex: 1;
         min-height: 220px;
     }
 
@@ -2179,8 +2200,7 @@ html {
 
 @media (max-width: 576px) {
     .about-stats {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
         width: 100%;
         gap: 1rem;
     }
