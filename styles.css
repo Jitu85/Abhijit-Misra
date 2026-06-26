@@ -439,6 +439,14 @@ h1, h2, h3, h4 {
     flex-wrap: wrap; /* Ensure multi-row on small screens if needed */
 }
 
+/* Tidy 2x2 grid for hero buttons on tablet-sized screens */
+@media (max-width: 900px) and (min-width: 481px) {
+    .cta-buttons {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}
+
 .personal-btn {
     background: linear-gradient(135deg, #ff0080, #7928ca);
     box-shadow: 0 4px 15px rgba(255, 0, 128, 0.4);
@@ -652,7 +660,7 @@ h1, h2, h3, h4 {
 
 .about-stats .stat-card {
     flex: 1;
-    min-height: 260px;
+    min-height: 220px;
 }
 
 .stat-card {
@@ -1066,7 +1074,6 @@ h1, h2, h3, h4 {
 }
 
 /* --- Footer --- */
-/* --- Footer --- */
 .footer {
     padding: 2rem 0;
     border-top: 1px solid var(--glass-border);
@@ -1079,19 +1086,15 @@ h1, h2, h3, h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .footer-copyright {
-    margin: 0 auto;
+    flex: 1;
     text-align: center;
 }
 
 .footer-counter-wrapper {
-    position: absolute;
-    right: 12.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+    flex-shrink: 0;
 }
 
 .counter-btn {
@@ -2187,14 +2190,14 @@ html {
     transform: translateY(-5px);
 }
 
-/* --- Pulse Animation for Primary Buttons --- */
+/* --- Pulse Animation for Hero Buttons Only --- */
 @keyframes pulse-glow {
     0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
     70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
     100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
 }
 
-.primary-btn {
+.cta-buttons .primary-btn {
     animation: pulse-glow 2s infinite;
 }
 
@@ -2243,7 +2246,11 @@ html {
     .nav-links a {
         font-size: 1.5rem;
     }
-    
+
+    .nav-time {
+        display: none;
+    }
+
     .about-content {
         flex-direction: column;
         padding: 2rem;
