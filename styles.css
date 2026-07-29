@@ -2376,13 +2376,8 @@ html {
         background: radial-gradient(circle, rgba(139, 92, 246, 0.45) 0%, transparent 70%);
     }
 
-    /* Hide standard cursor when custom cursor is active */
     body {
-        cursor: none;
-    }
-    
-    a, button, input, textarea, .slide-handle, .toggle-slider, .theme-toggle, .back-to-top {
-        cursor: none;
+        cursor: auto;
     }
 }
 
