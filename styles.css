@@ -1438,7 +1438,8 @@ h1, h2, h3, h4 {
 }
 
 .menu-mitra-box,
-.quiz-zone-box {
+.quiz-zone-box,
+.talent-hub-box {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 15px;
@@ -1447,6 +1448,59 @@ h1, h2, h3, h4 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.talent-hub-box {
+    width: 100%;
+    max-width: 350px;
+}
+
+.talent-hub-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+}
+
+.talent-hub-box h3 {
+    font-size: 1.25rem;
+    color: #8b5cf6;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.talent-hub-box p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.talent-hub-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    margin-top: auto;
+    width: 100%;
+}
+
+.talent-hub-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(139, 92, 246, 0.5);
+    filter: brightness(1.1);
 }
 
 .quiz-zone-box h3 {
@@ -1549,6 +1603,14 @@ h1, h2, h3, h4 {
 
 [data-theme="light"] .quiz-zone-box h3 {
     color: #059669; /* Emerald/Green Accent for light theme */
+}
+
+[data-theme="light"] .talent-hub-box {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .talent-hub-box h3 {
+    color: #7c3aed;
 }
 
 [data-theme="light"] .slide-track {
@@ -2243,14 +2305,15 @@ html {
     }
 }
 /* --- Card Glare Effect --- */
-.project-card, .menu-mitra-box, .quiz-zone-box {
+.project-card, .menu-mitra-box, .quiz-zone-box, .talent-hub-box {
     position: relative;
     overflow: hidden;
 }
 
 .project-card::after,
 .menu-mitra-box::after,
-.quiz-zone-box::after {
+.quiz-zone-box::after,
+.talent-hub-box::after {
     content: '';
     position: absolute;
     top: 0;
@@ -2267,7 +2330,8 @@ html {
 
 .project-card:hover::after,
 .menu-mitra-box:hover::after,
-.quiz-zone-box:hover::after {
+.quiz-zone-box:hover::after,
+.talent-hub-box:hover::after {
     opacity: 1;
 }
 

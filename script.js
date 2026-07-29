@@ -494,7 +494,7 @@ nothing to commit, working tree clean (ready for the AI era).`;
     }
 
     // 15. 3D Tilt & Light Glare Effect for Cards
-    const tiltCards = document.querySelectorAll('.project-card, .menu-mitra-box, .quiz-zone-box');
+    const tiltCards = document.querySelectorAll('.project-card, .menu-mitra-box, .quiz-zone-box, .talent-hub-box');
     if (supportsHover && tiltCards.length > 0) {
         tiltCards.forEach(card => {
             const isProjectCard = card.classList.contains('project-card');
